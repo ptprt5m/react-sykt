@@ -4,10 +4,12 @@ import {reducer as formReducer} from 'redux-form';
 import weatherReducer from "./weatherReducer";
 import thunkMiddleware from 'redux-thunk';
 import placesReducer from "./placesReducer";
+import appReducer from "./appReducer";
 
 
 let reducers = combineReducers({
     login: loginReducer,
+    app: appReducer,
     weather: weatherReducer,
     places: placesReducer,
     form: formReducer

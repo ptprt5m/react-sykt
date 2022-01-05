@@ -4,24 +4,36 @@ import {Link} from "react-router-dom";
 const HomepageLinks = () => {
     return (
         <div className={'homepageLinks__wrapper'}>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/about"}>Подробнее о городе</Link>
-            </div>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/attractions"}>Достопримечательности</Link>
-            </div>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/stars"}>Известные личности</Link>
-            </div>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/establishments"}>Вкусно поесть</Link>
-            </div>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/map"}>Карта</Link>
-            </div>
-            <div className={'homepageLinks__item'}>
-                <Link to={"/weather"}>Погода</Link>
-            </div>
+            <Link to={"/about"}>
+                <div className={'homepageLinks__item'}>
+                    Подробнее о городе
+                </div>
+            </Link>
+            <Link to={"/attractions"}>
+                <div className={'homepageLinks__item'}>
+                    Достопримечательности
+                </div>
+            </Link>
+            <Link to={"/stars"}>
+                <div className={'homepageLinks__item'}>
+                    Известные личности
+                </div>
+            </Link>
+            <Link to={"/establishments"}>
+                <div className={'homepageLinks__item'}>
+                    Вкусно поесть
+                </div>
+            </Link>
+            <Link to={"/map"}>
+                <div className={'homepageLinks__item'}>
+                    Карта
+                </div>
+            </Link>
+            <Link to={"/weather"}>
+                <div className={'homepageLinks__item'}>
+                    Погода
+                </div>
+            </Link>
         </div>
     )
 }

@@ -9,12 +9,14 @@ import IMG_electrician from "../img/electrician.jpg"
 const Attractions = () => {
     return (
         <div>
-            <TopButton />
+            <TopButton/>
             <div className="wrapper">
                 <h1>Достопримечательности</h1>
                 <div className="main__wrapper-items">
                     <div className="main__wrapper-item">
-                        <img src={IMG_pitirimSorokin}/>
+                        <div className="main__wrapper-item_img">
+                            <img src={IMG_pitirimSorokin}/>
+                        </div>
                         <h3>Памятник Питириму Сорокину</h3>
                         <p>
                             22 августа 2014 года перед входом в Сыктывкарский государственный университет открыт
@@ -24,7 +26,9 @@ const Attractions = () => {
                         <span>Сыктывкар, Респ. Коми, Октябрьский проспект, 55, 167001</span>
                     </div>
                     <div className="main__wrapper-item">
-                        <img src={IMG_stella} />
+                        <div className="main__wrapper-item_img">
+                            <img src={IMG_stella}/>
+                        </div>
                         <h3>Монумент трудовой славы</h3>
                         <p>
                             Монумент трудовой славы воздвигнут в честь трудовых достижений трудящихся Коми АССР и
@@ -34,7 +38,9 @@ const Attractions = () => {
                         <span>ул. Коммунистическая, 33, Сыктывкар, Респ. Коми, 167001</span>
                     </div>
                     <div className="main__wrapper-item">
-                        <img src={IMG_rubles} />
+                        <div className="main__wrapper-item_img">
+                            <img src={IMG_rubles}/>
+                        </div>
                         <h3>Памятник российскому рублю</h3>
                         <p>
                             По сообщению банка, установка «Знака Рубля» задумана для его популяризации, повышения
@@ -44,7 +50,9 @@ const Attractions = () => {
                         <span>ул. Ленина, 53, Сыктывкар, Респ. Коми, 167000</span>
                     </div>
                     <div className="main__wrapper-item">
-                        <img src={IMG_letterO}/>
+                        <div className="main__wrapper-item_img">
+                            <img src={IMG_letterO}/>
+                        </div>
                         <h3>Памятник букве «o» алфавита коми</h3>
                         <p>
                             Памятник созданн скульптором Александром Выборовым и открыт в Сыктывкаре в 2011 году.
@@ -55,7 +63,9 @@ const Attractions = () => {
                         <span>ул. Бабушкина, 31, Сыктывкар, Респ. Коми, 167000</span>
                     </div>
                     <div className="main__wrapper-item">
-                        <img src={IMG_electrician}/>
+                        <div className="main__wrapper-item_img">
+                            <img src={IMG_electrician}/>
+                        </div>
                         <h3>Памятник электромонтеру</h3>
                         <p>
                             Инициаторами появления памятника стали сами энергетики. Таким необычным способом руководство

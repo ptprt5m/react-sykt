@@ -1,3 +1,5 @@
+@import '__variables.scss';
+@import '__mixins.scss';
 
 a {
   text-decoration: none;
@@ -11,6 +13,19 @@ ul {
     list-style: none;
     font-size: 18px;
     margin-right: 10px;
+    li {
+        ul {
+            background: $primary-dark;
+            visibility: hidden;
+            opacity: 0;
+            min-width: 5rem;
+            position: absolute;
+            transition: all 0.5s ease;
+            margin-top: 1rem;
+            left: 0;
+            display: none;
+        }
+    }
 }
 
 li {
@@ -22,31 +37,16 @@ li {
     position: relative;
     text-decoration: none;
     transition-duration: 0.5s;
-}
-
-li a {
-  color: #000;
-}
-
-li:hover,
-li:focus-within {
-    cursor: pointer;
-}
-
-li:focus-within a {
-  outline: none;
-}
-
-ul li ul {
-    background: #f424f2;
-    visibility: hidden;
-    opacity: 0;
-    min-width: 5rem;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    left: 0;
-    display: none;
+    a {
+        color: $primary-text;
+    }
+    &:hover,
+    &:focus-within {
+        cursor: pointer;
+        a {
+            outline: none;
+        }
+    }
 }
 
 ul li:hover > ul,

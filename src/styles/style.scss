@@ -18,7 +18,7 @@ h1 {
 
 body {
   font-family: 'MuseoSansBold';
-  color: $black;
+  color: $secondary-text;
   min-height: 100%;
 }
 
@@ -26,6 +26,43 @@ body {
   width: 70vw;
   margin: 0 auto;
 }
+
+.initializing {
+  @include flexColumn;
+}
+
+//.error__message {
+//  font-size: 14px;
+//  padding-bottom: 20px;
+//  color: $secondary-dark;
+//}
+
+//.all__message {
+//  font-size: 14px;
+//  padding-bottom: 20px;
+//  color: green;
+//}
+
+.feedback__textarea {
+  height: 28vh;
+  font-size: 17px;
+}
+
+.yandex__pay {
+  margin-top: 40px;
+  width: 50vw;
+  height: 50vh;
+  min-width: 350px;
+}
+
+//.topics__admin {
+//  padding: 20px;
+//  width: 50vw;
+//  margin: 20px;
+//  border: 2px solid #DDD;
+//}
+
+//For span
 
 .blue {
   color: blue;
@@ -35,12 +72,12 @@ body {
   color: red;
 }
 
-.purple {
-  color: #DAA520;
+.gold {
+  color: $gold;
 }
 
-.span {
-  color: $darkBlue;
+.secondary {
+  color: $secondary;
 }
 
 //Header styles start
@@ -48,7 +85,7 @@ body {
 .header {
   @include flex;
   @include wh;
-  @include bg($selectedColor);
+  @include bg($primary-dark);
   z-index: 999;
   padding: 10px;
   margin: 0 auto;
@@ -60,10 +97,15 @@ body {
   }
 
   &__section-right {
-    a {
-      @include links;
-      transition: .2s all;
+
+    .active {
+      color: $secondary;
     }
+
+    a {
+      @include links(.2s all, $secondary);
+    }
+
     ul {
       margin: 0 10px 0 0;
     }
@@ -72,13 +114,15 @@ body {
   &__item {
     padding: 10px 15px;
     margin: 0 10px;
+
     a {
-      color: $black;
+      color: $primary-text;
     }
   }
 
   &__logo {
-    font-size: 1.8em;
+    font-size: 1.7em;
+
     &:hover {
       cursor: pointer;
     }
@@ -99,168 +143,191 @@ body {
   @include flexColumn;
   @include wh;
 
+  &__form {
+    @include flexColumn;
+    @include wh(30vw);
+    border: 2px solid $main-bg;
+    padding: 20px;
+    margin: 5vh 2vh 2vh;
+    min-width: 300px;
+
+    &-title {
+      padding-bottom: 20px;
+      font-size: 24px;
+      color: $secondary-text;
+    }
+
+    &-input {
+      @include wh(25vw, 30px);
+      border: 2px solid $main-bg;
+      outline: none;
+      margin-bottom: 15px;
+      min-width: 170px;
+      padding-left: 10px;
+      transition: 0.3s all;
+
+      &:hover {
+        border: 2px solid $primary;
+      }
+
+      &:focus {
+        border: 2px solid $blue;
+      }
+    }
+
+    &-textarea {
+      @include wh(25vw, 80px);
+      font-family: Arial;
+      border: 2px solid $main-bg;
+      outline: none;
+      margin-bottom: 15px;
+      min-width: 170px;
+      padding: 5px 0 0 10px;
+      transition: 0.3s all;
+
+      &:hover {
+        border: 2px solid $primary;
+      }
+
+      &:focus {
+        border: 2px solid $blue;
+      }
+    }
+
+    &-button {
+      @include wh(15vw, 30px);
+      font-family: 'MuseoSansBold';
+      border: 2px solid $main-bg;
+      outline: none;
+      margin-bottom: 15px;
+      min-width: 170px;
+      transition: 0.3s all;
+      cursor: pointer;
+
+      a {
+        color: $secondary-text;
+      }
+
+      &:hover {
+        border: 2px solid $primary-dark;
+      }
+
+      &:active {
+        color: $primary-light;
+      }
+
+      &:focus {
+        border: 2px solid $primary-light;
+      }
+    }
+
+    &-forgot {
+      margin-bottom: 15px;
+      color: $secondary-text;
+      transition: 0.3s all;
+
+      &:hover, &:active, &:focus {
+        color: $primary-light;
+      }
+    }
+  }
+
   &__wrapper {
     @include flex {
       justify-content: center;
+    }
+
+    &-about {
+      margin: 35px 5px 0px;
+      font-size: 1.3em;
+      line-height: 1.5em;
+      word-spacing: 0.1em;
+      border-left: 2.5px solid $primary-dark;
+      padding-left: 15px;
+      text-align: left;
+    }
+
+    &-item {
+      @include flexColumn;
+      @include wh(70vw);
+      margin: auto;
+      max-width: 800px;
+      padding-top: 2vh;
+      transition: .3s all;
+
+      &-block {
+        @include flexColumn;
+        @include wh(100%, auto);
+        background: $main-bg;
+        border-radius: 20px;
+        border: 2px $primary-dark solid;
+        padding: 10px 0;
+
+        h4 {
+          color: $secondary-text;
+          margin: 10px 5px;
+        }
+        button {
+          @include wh(15vw, 30px);
+          @include links(.2s all, $primary-text);
+          font-family: 'MuseoSansBold';
+          border: 2px solid $primary-dark;
+          border-radius: 20px;
+          background: $light-bg;
+          outline: none;
+          margin: 10px 5px;
+          min-width: 170px;
+          transition: 0.3s all;
+          cursor: pointer;
+          &:hover, &:active, &:focus {
+            background: $primary;
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 6vh;
+      }
+
+      img {
+        @include wh(60vw);
+      }
+
+      &_img {
+        min-height: 400px;
+      }
+
+      h3 {
+        @include att($secondary-text, 1.4em, 4vh);
+      }
+
+      p {
+        @include att($darkGray, 1em, 2vh);
+      }
+
+      span {
+        @include att($secondary, 1em, 2vh);
+      }
+
+      a {
+        @include links(.3s all, $secondary-light);
+        color: $secondary;
+      }
     }
   }
 }
 
 //Main styles end
 
-//Form auth styles start
-
-.main__form {
-  @include flexColumn;
-  @include wh(30vw);
-  border: 2px solid #DDD;
-  padding: 20px;
-  margin: 5vh 2vh 2vh;
-  min-width: 300px;
-
-  &-title {
-    padding-bottom: 20px;
-    font-size: 24px;
-    color: #000;
-  }
-
-  &-input {
-    @include wh(25vw, 30px);
-    border: 2px solid $gray;
-    outline: none;
-    margin-bottom: 15px;
-    min-width: 170px;
-    padding-left: 10px;
-    transition: 0.3s all;
-    &:hover {
-      border: 2px solid $selectedColor;
-    }
-    &:focus {
-      border: 2px solid $blue;
-    }
-  }
-
-  &-button {
-    @include wh(15vw, 30px);
-    font-family: 'MuseoSansBold';
-    border: 2px solid $gray;
-    outline: none;
-    margin-bottom: 15px;
-    min-width: 170px;
-    transition: 0.3s all;
-    cursor: pointer;
-    a {
-      color: black;
-    }
-    &:hover {
-      border: 2px solid $black;
-    }
-    &:active {
-      color: $blue;
-    }
-    &:focus {
-      border: 2px solid $blue;
-    }
-  }
-
-  &-forgot {
-    margin-bottom: 15px;
-    color: $black;
-    transition: 0.3s all;
-    &:hover, &:active, &:focus {
-      color: $blue;
-    }
-  }
-}
-
-//Form auth styles end
-
-//Attractions styles start
-
-.main__wrapper-items {
-
-  .main__wrapper-item {
-    @include flexColumn;
-    @include wh(70vw);
-    margin: auto;
-    max-width: 800px;
-    padding-top: 2vh;
-    transition: .3s all;
-
-    &:not(:first-child) {
-      margin-top: 6vh;
-    }
-
-    img {
-      @include wh(60vw);
-    }
-
-    h3 {
-      @include att($black, 1.4em, 3vh);
-    }
-
-    p {
-      @include att($darkGray, 1em, 2vh);
-    }
-
-    span {
-      @include att(#DAA520, 1em, 2vh);
-    }
-
-    a {
-      @include links(.3s all);
-      color: blue;
-      &:hover {
-        color: $selectedColor;
-      }
-      &:active {
-        color: $selectedColor;
-      }
-      &:focus {
-        color: $selectedColor;
-      }
-    }
-  }
-}
-
-.main__wrapper-item-block {
-  @include flexColumn;
-  @include wh(100%, 10vh);
-  background: lightblue;
-  border-radius: 20px;
-  border: 1px black solid;
-  padding: 10px 0;
-
-  h4 {
-    margin: 0;
-  }
-}
-
-//Attractions styles end
-
 //Yandex map styles start
 
 iframe {
   @include wh(75vw, 75vh);
-  border: 2px solid #808080;
+  border: 2px solid $primary-dark;
   margin: 0px 5px;
 }
 
 //Yandex map styles end
-
-//About styles start
-
-.main__wrapper-about {
-  margin: 35px 5px 0px;
-  font-size: 1.3em;
-  line-height: 1.5em;
-  word-spacing: 0.1em;
-  border-left: 2.5px solid #000;
-  padding-left: 15px;
-  text-align: left;
-}
-
-//About styles end
 
 //Top link styles start
 
@@ -303,49 +370,13 @@ iframe {
 
   span {
     padding: 7px 20px;
-    background-color: $gray;
+    background-color: $primary;
+    color: $primary-text;
     border-radius: 100px;
   }
 }
 
 //Footer styles end
-
-
-.index:hover {
-  color: #000;
-}
-
-
-.error__message {
-  font-size: 14px;
-  padding-bottom: 20px;
-  color: red;
-}
-
-.all__message {
-  font-size: 14px;
-  padding-bottom: 20px;
-  color: green;
-}
-
-.feedback__textarea {
-  height: 28vh;
-  font-size: 17px;
-}
-
-.yandex__pay {
-  margin-top: 40px;
-  width: 50vw;
-  height: 50vh;
-  min-width: 350px;
-}
-
-.topics__admin {
-  padding: 20px;
-  width: 50vw;
-  margin: 20px;
-  border: 2px solid #DDD;
-}
 
 //Homepage Links styles start
 
@@ -353,32 +384,62 @@ iframe {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding-top: 20px;
-}
-
-.homepageLinks__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 50px 40px;
-  background: $gray;
-  border: 1.5px solid black;
-  border-radius: 15px;
-  max-width: 250px;
-  margin: 5px 10px;
 
   a {
-    transition: .3s all;
+    transition: .1s all;
     text-decoration: none;
-    color: $black;
-    &:hover {
-      color: $selectedColor;
+    color: $secondary-text;
+
+    &:hover, &:active, &:focus {
+      color: $primary-text;
     }
-    &:active {
-      color: $selectedColor;
+  }
+
+  .homepageLinks__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 40px;
+    background: $main-bg;
+    border: 2px solid $primary-dark;
+    border-radius: 15px;
+    max-width: 250px;
+    margin: 5px 10px;
+    transition: .2s all;
+
+    &:hover, &:active, &:focus {
+      background: $primary-light;
+      border: 2px solid $secondary-text;
     }
-    &:focus {
-      color: $selectedColor;
+  }
+}
+
+.wrapper__profile {
+  @include flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  &-picture {
+    @include wh(200px, 200px);
+    border-radius: 300px;
+    border: 3px $primary solid;
+    margin-bottom: 20px;
+  }
+  &-photo {
+    @include flexColumn;
+  }
+  &-desc {
+    text-align: left;
+    margin-left: 50px;
+    &_userName {
+      color: $secondary;
+    }
+    &_email {
+      color: $primary;
+      &:before {
+        content: 'Email: ';
+        color: $primary-light;
+      }
     }
   }
 }

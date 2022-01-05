@@ -15,7 +15,7 @@ const Weather = ({temp, pressure, humidity, windSpeed, windDeg, getWeatherDataTC
         } else if (temp < 0) {
             return <span className={'blue'}>{temp}</span>
         } else {
-            return <span className={'purple'}>{temp}</span>
+            return <span className={'secondary'}>{temp}</span>
         }
     }
 
@@ -41,8 +41,8 @@ const Weather = ({temp, pressure, humidity, windSpeed, windDeg, getWeatherDataTC
                     <Preloader /> :
                     <div>
                         <h3>В сыктывкаре сейчас {tempColor(temp)} градусов</h3>
-                        <h3>Давление <span className="purple">{pressure}</span> мм рт. ст., влажность <span className="purple">{humidity}%</span></h3>
-                        <h3>Ветер <span className="purple">{windSpeed}</span> метров в секунду, дует на <span className="purple">{windDegMaker(windDeg)}</span></h3>
+                        <h3>Давление <span className="secondary">{pressure}</span> мм рт. ст., влажность <span className="secondary">{humidity}%</span></h3>
+                        <h3>Ветер <span className="secondary">{windSpeed}</span> метров в секунду, дует на <span className="secondary">{windDegMaker(windDeg)}</span></h3>
                     </div>
                 }
             </div>

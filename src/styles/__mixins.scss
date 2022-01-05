@@ -27,17 +27,17 @@
   @content;
 }
 
-@mixin links($transition: none) {
+@mixin links($transition: none, $color: white) {
   text-decoration: none;
   transition: $transition;
   &:hover {
-    color: $white;
+    color: $color;
   }
   &:active {
-    color: $white;
+    color: $color;
   }
   &:focus {
-    color: $white;
+    color: $color;
   }
 }
 

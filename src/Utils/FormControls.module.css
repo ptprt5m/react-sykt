@@ -1,11 +1,11 @@
 .error {
-    border: 1.5px solid red;
+    border: 2px solid #ef5350;
 }
 
 .error::placeholder {
-    color: red;
+    color: #ef5350;
 }
 
 .errorText {
-    color: red;
+    color: #ef5350;
 }

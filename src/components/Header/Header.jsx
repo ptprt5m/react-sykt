@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = ({isAuth, userLogout}) => {
     return (
         <header className="header">
             <div className="header__section-left">
@@ -12,18 +12,29 @@ const Header = () => {
             <div className="header__section-right">
                 <nav role="navigation">
                     <ul>
+                        {isAuth ?
+                            <li><NavLink to="/feedback">Обратная связь</NavLink></li>
+                            : null}
                         <li>
                             <NavLink to="/about">Подробнее о городе</NavLink>
                             <ul className="dropdown" aria-label="submenu">
                                 <li><NavLink to="/attractions">Достопримечательности</NavLink></li>
                                 <li><NavLink to="/stars">Известные личности</NavLink></li>
                                 <li><NavLink to="/establishments">Вкусно поесть</NavLink></li>
+                                <li><NavLink to="/hotels">Переночевать</NavLink></li>
                                 <li><NavLink to="/map">Карта</NavLink></li>
                                 <li><NavLink to="/weather">Погода</NavLink></li>
                                 <li><NavLink to="/about">О городе</NavLink></li>
                             </ul>
                         </li>
-                        <li><NavLink to="/login">Войти</NavLink></li>
+                        {isAuth ?
+                            <li><NavLink to="/profile">Профиль</NavLink></li>
+                            : null
+                        }
+                        {isAuth ?
+                            <li><NavLink to="/" onClick={userLogout}>Выйти</NavLink></li>
+                            : <li><NavLink to="/login">Войти</NavLink></li>
+                        }
                     </ul>
                 </nav>
             </div>

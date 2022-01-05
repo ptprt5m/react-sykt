@@ -1,14 +1,18 @@
 import React, {useEffect} from 'react'
 import TopButton from "../Utils/TopButton";
 import {connect} from "react-redux";
-import {getPlacesDataTC} from "../redux/placesReducer";
+import {getInfo2GISTC, getPlacesDataTC} from "../redux/placesReducer";
 import Preloader from "./commons/Preloader";
 
-const Establishments = ({getPlacesDataTC, places, isFetching}) => {
+const Establishments = ({getPlacesDataTC, getInfo2GISTC, places, placeInfo, isFetching}) => {
 
     useEffect(() => {
         getPlacesDataTC()
     }, [])
+
+    let getInfo2GIS = (lat, lon) => {
+        getInfo2GISTC(lat, lon)
+    }
 
     return (
         <div>
@@ -22,8 +26,21 @@ const Establishments = ({getPlacesDataTC, places, isFetching}) => {
                                 (<div className="main__wrapper-item" key={p.id}>
                                     <div className="main__wrapper-item-block">
                                         <h4>{p.properties.name}</h4>
-                                        <a target="_blank" href={'https://www.openstreetmap.org/' + p.properties.osm}>Точка на openstreetmap</a>
-                                        {/*<a href={'https://yandex.ru/maps/19/syktyvkar/?ll=50.825529%2C61.672964&mode=search&sll=50.825462%2C61.672889&text=61.672889%2C50.825462&z=16.33' + p.geometry.coordinates[0]}>Точка на Яндекс.Карте</a>*/}
+                                        <a target="_blank" href={'https://www.openstreetmap.org/' + p.properties.osm}>Точка
+                                            на openstreetmap</a>
+                                        <button onClick={() => {
+                                            getInfo2GIS(p.geometry.coordinates[1], p.geometry.coordinates[0])
+                                        }}>Получить больше данных
+                                        </button>
+
+
+                                        {placeInfo ?
+                                            <div>
+                                                <p>Адрес: {placeInfo[0].address_name}</p>
+                                                <p>Тип строения: {placeInfo[0].purpose_name}</p>
+                                                <a target="_blank" href="/">Перейти в 2GIS</a>
+                                            </div> : null}
+                                        <p>Координаты: {p.geometry.coordinates[0] + ' ' + p.geometry.coordinates[1]}</p>
                                     </div>
                                 </div>) : null
                         )) : null}
@@ -37,8 +54,9 @@ const Establishments = ({getPlacesDataTC, places, isFetching}) => {
 let mapStateToProps = (state) => {
     return {
         places: state.places.places,
+        placeInfo: state.places.placeInfo,
         isFetching: state.places.isFetching
     }
 }
 
-export default connect(mapStateToProps, {getPlacesDataTC})(Establishments)
+export default connect(mapStateToProps, {getPlacesDataTC, getInfo2GISTC})(Establishments)
