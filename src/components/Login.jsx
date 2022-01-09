@@ -25,7 +25,6 @@ const LoginForm = (props) => {
             <Field name={'rememberMe'}
                    component={Input}
                    type={"checkBox"}
-                   validate={[required]}
             />
             <Link className="main__form-forgot" to={"/forgot"}>Забыли?</Link>
             <button onSubmit={props.onSubmit} className="main__form-button">Войти</button>

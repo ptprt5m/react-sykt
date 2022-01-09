@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ProfilePhoto from "./ProfilePhoto";
 import DescriptionProfile from "./DescriptionProfile";
 import {connect} from "react-redux";
+import {useNavigate} from "react-router";
 
 const Profile = (props) => {
+
+    const navigate = useNavigate();
+    const refreshProfile = () => {
+        if (!props.email) {
+            navigate('/login');
+        }
+    }
+
+    useEffect(() => {
+        refreshProfile()
+    }, []);
+
     return (
         <div className="wrapper">
             <h1>Профиль</h1>

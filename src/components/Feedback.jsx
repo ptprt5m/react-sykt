@@ -3,7 +3,6 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../Utils/FormControls";
 import {required} from "../Utils/validators";
 import {connect} from "react-redux";
-import {userLogin} from "../redux/loginReducer";
 import {sendFeedback} from "../redux/feedbackReducer";
 
 const FeedbackForm = (props) => {
@@ -44,7 +43,7 @@ const Feedback = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-
+        email: state.login.email
     }
 }
 

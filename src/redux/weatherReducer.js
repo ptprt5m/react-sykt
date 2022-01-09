@@ -71,10 +71,10 @@ export const getWeatherDataTC = () => {
         weatherAPI.getCity('Syktyvkar')
             .then(data => {
                     if (data.cod === 200) {
-                        dispatch(setTemp(data.main.temp))
+                        dispatch(setTemp(Math.round(data.main.temp)))
                         dispatch(setPressure(data.main.pressure))
                         dispatch(setHumidity(data.main.humidity))
-                        dispatch(setWindSpeed(data.wind.speed))
+                        dispatch(setWindSpeed(Math.round(data.wind.speed)))
                         dispatch(setWindDeg(data.wind.deg))
                         dispatch(toggleIsFetching(false))
                     }

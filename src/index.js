@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./redux/redux";
+import TopButton from "./Utils/TopButton";
 
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
                 <App/>
+                <TopButton />
             </Provider>
         </BrowserRouter>
     </React.StrictMode>,
