@@ -3,6 +3,7 @@ import {twoGisAPI} from "../api/api2GIS";
 
 const SET_PLACES = 'weatherReducer/SET_PLACES'
 const SET_INFO_PLACE = 'weatherReducer/SET_INFO_PLACE'
+const SET_INFO_PLACE_ID = 'weatherReducer/SET_INFO_PLACE_ID'
 const SET_PAGE_SIZE = 'weatherReducer/SET_PAGE_SIZE'
 const TOGGLE_IS_FETCHING = 'weatherReducer/TOGGLE_IS_FETCHING'
 const TOGGLE_IS_MINI_FETCHING = 'weatherReducer/TOGGLE_IS_MINI_FETCHING'
@@ -11,6 +12,7 @@ const SET_TOTAL_PLACES_COUNT = 'weatherReducer/SET_TOTAL_PLACES_COUNT'
 let initialState = {
     places: null,
     placeInfo: null,
+    placeInfoId: null,
     isFetching: false,
     isMiniFetching: false,
     pageSize: 10,
@@ -28,6 +30,12 @@ const placesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 placeInfo: action.items
+            };
+        }
+        case SET_INFO_PLACE_ID: {
+            return {
+                ...state,
+                placeInfoId: action.placeInfoId
             };
         }
         case SET_PAGE_SIZE: {
@@ -61,6 +69,7 @@ const placesReducer = (state = initialState, action) => {
 
 export const setPlaces = (places) => ({type: SET_PLACES, places})
 export const setInfoPlace = (items) => ({type: SET_INFO_PLACE, items})
+export const setInfoPlaceId = (placeInfoId) => ({type: SET_INFO_PLACE_ID, placeInfoId})
 export const setPageSize = (pageSize) => ({type: SET_PAGE_SIZE, pageSize})
 export const setTotalPlacesCount = (totalPlacesCount) => ({type: SET_TOTAL_PLACES_COUNT, totalPlacesCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
@@ -92,10 +101,11 @@ export const setNewPlacesTC = (pageSize) => (dispatch) => {
         );
 }
 
-export const getInfo2GISTC = (lat, lon) => (dispatch) => {
+export const getInfo2GISTC = (lat, lon, placeInfoId) => (dispatch) => {
     twoGisAPI.getInfoAboutTarget(lat, lon)
         .then(data => {
                 if (data.meta.code === 200) {
+                    dispatch(setInfoPlaceId(placeInfoId))
                     dispatch(setInfoPlace(data.result.items))
                 }
             }

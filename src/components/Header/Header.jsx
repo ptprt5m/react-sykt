@@ -12,9 +12,7 @@ const Header = ({isAuth, userLogout}) => {
             <div className="header__section-right">
                 <nav role="navigation">
                     <ul>
-                        {isAuth ?
-                            <li><NavLink to="/feedback">Обратная связь</NavLink></li>
-                            : null}
+                        <li><NavLink to="/feedback">Обратная связь</NavLink></li>
                         <li>
                             <NavLink to="/about">Подробнее о городе</NavLink>
                             <ul className="dropdown" aria-label="submenu">

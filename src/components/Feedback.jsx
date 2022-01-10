@@ -6,9 +6,16 @@ import {connect} from "react-redux";
 import {sendFeedback} from "../redux/feedbackReducer";
 
 const FeedbackForm = (props) => {
+    debugger
     return (
         <form onSubmit={props.handleSubmit} className="main__form">
             <h2 className="main__form-title">Обратная связь</h2>
+            {props.email === null ?
+                <Field name={'emailForFeedback'}
+                       component={Input}
+                       placeholder={'Ваш Email'}
+                       validate={[required]}
+                /> : null}
             <Field name={'titleOfFeedback'}
                    component={Input}
                    placeholder={'Тема обращения'}
@@ -35,7 +42,7 @@ const Feedback = (props) => {
     return (
         <div className="wrapper">
             <div className="main__wrapper">
-                <FeedbackReduxForm onSubmit={onSubmit}/>
+                <FeedbackReduxForm email={props.email} onSubmit={onSubmit}/>
             </div>
         </div>
     )

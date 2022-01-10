@@ -7,12 +7,15 @@ import {
     setPageSize
 } from "../redux/placesReducer";
 import Preloader from "./commons/Preloader";
-import restaurant from "../img/restaurant.png"
+import img0 from "../img/rest/0.png"
+import img1 from "../img/rest/1.png"
+import img2 from "../img/rest/2.png"
+import img3 from "../img/rest/3.png"
+import img4 from "../img/rest/4.png"
 
 const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
-                            places, placeInfo, isFetching, pageSize,
-                            totalPlacesCount, setPageSize, isMiniFetching,
-                            setTotalPlacesCountTC}) => {
+                            places, placeInfo, placeInfoId, isFetching, pageSize,
+                            totalPlacesCount, setPageSize, isMiniFetching}) => {
 
     useEffect(() => {
         getPlacesDataTC(pageSize)
@@ -22,8 +25,8 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
         setNewPlacesTC(pageSize)
     }, [pageSize])
 
-    let getInfo2GIS = (lat, lon) => {
-        getInfo2GISTC(lat, lon)
+    let getInfo2GIS = (lat, lon, placeInfoId) => {
+        getInfo2GISTC(lat, lon, placeInfoId)
     }
 
     return (
@@ -35,17 +38,17 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                         p.properties.name != '' ?
                             (<div className="main__wrapper-item" key={p.id}>
                                 <div className="main__wrapper-item-block">
-                                    <img className="main__wrapper-item-ava" src={restaurant} alt="restaurantPhoto"/>
+                                    <img className="main__wrapper-item-ava" src={img0} alt="restaurantPhoto"/>
                                     <div className="main__wrapper-item-block_right">
                                         <h4>{p.properties.name}</h4>
                                         <a target="_blank" href={'https://www.openstreetmap.org/' + p.properties.osm}>Точка
                                             на openstreetmap</a>
                                         <button className="places__button" onClick={() => {
-                                            getInfo2GIS(p.geometry.coordinates[1], p.geometry.coordinates[0])
+                                            getInfo2GIS(p.geometry.coordinates[1], p.geometry.coordinates[0], p.id)
                                         }}>Получить больше данных
                                         </button>
 
-                                        {placeInfo ?
+                                        {placeInfo && placeInfoId === p.id ?
                                             <div>
                                                 <p>Адрес: {placeInfo[0].address_name || 'Нет информации'}</p>
                                                 <p>Тип строения: {placeInfo[0].purpose_name || 'Нет информации'}</p>
@@ -61,7 +64,6 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
             {isMiniFetching ? <Preloader /> : null}
             <button className="places__button places__button-download"
                     onClick={() => {
-                        debugger
                         if (pageSize <= totalPlacesCount) {
                             setPageSize(pageSize)
                         } else {
@@ -77,6 +79,7 @@ let mapStateToProps = (state) => {
     return {
         places: state.places.places,
         placeInfo: state.places.placeInfo,
+        placeInfoId: state.places.placeInfoId,
         isFetching: state.places.isFetching,
         isMiniFetching: state.places.isMiniFetching,
         pageSize: state.places.pageSize,
