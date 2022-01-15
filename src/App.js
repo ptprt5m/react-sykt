@@ -31,9 +31,9 @@ function App(props) {
     }, []);
 
 
-    if (!props.initialized) {
-        return <InitializingPage />
-    }
+    // if (!props.initialized) {
+    //     return <InitializingPage />
+    // }
 
     return (
         <div className="App">

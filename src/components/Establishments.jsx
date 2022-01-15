@@ -43,7 +43,7 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                                         <h4>{p.properties.name}</h4>
                                         <a target="_blank" href={'https://www.openstreetmap.org/' + p.properties.osm}>Точка
                                             на openstreetmap</a>
-                                        <button className="places__button" onClick={() => {
+                                        <button className="all__button" onClick={() => {
                                             getInfo2GIS(p.geometry.coordinates[1], p.geometry.coordinates[0], p.id)
                                         }}>Получить больше данных
                                         </button>
@@ -62,7 +62,7 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                 </div>
             }
             {isMiniFetching ? <Preloader /> : null}
-            <button className="places__button places__button-download"
+            <button className="all__button all__button-download"
                     onClick={() => {
                         if (pageSize <= totalPlacesCount) {
                             setPageSize(pageSize)

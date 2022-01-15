@@ -72,7 +72,7 @@ body {
   color: $secondary;
 }
 
-.places__button {
+.all__button {
   @include links(.2s all, $primary-text);
   padding: 0 15px;
   height: 30px;
@@ -85,6 +85,7 @@ body {
   min-width: 170px;
   transition: 0.3s all;
   cursor: pointer;
+
   &:hover, &:active, &:focus {
     background: $primary;
   }
@@ -93,6 +94,7 @@ body {
     margin-top: 50px;
     background: $primary;
     color: $primary-text;
+
     &:hover, &:active, &:focus {
       background: $primary-text;
       color: $primary-dark;
@@ -265,6 +267,47 @@ body {
       border-left: 2.5px solid $primary-dark;
       padding-left: 15px;
       text-align: left;
+    }
+
+    &-weather {
+      @include flexColumn;
+      @include wh;
+      margin: 0 auto;
+
+      &-block {
+        @include flex;
+        @include wh;
+        justify-content: flex-start;
+        background: $primary-text;
+        border-radius: 20px;
+        border: 2px $primary-dark solid;
+        padding: 10px 20px;
+        margin-top: 4vh;
+        margin-bottom: 20px;
+
+        div {
+          @include flexColumn;
+          justify-content: flex-start;
+          align-items: flex-start;
+          h3, p {
+            margin: 7px 0;
+          }
+        }
+
+        img {
+          background: $main-bg;
+          border-radius: 20px;
+          margin-right: 20px;
+        }
+
+        &-right {
+          padding: 5px 0;
+        }
+
+        &:not(:first-child) {
+          margin-top: 6vh;
+        }
+      }
     }
 
     &-items {
@@ -454,23 +497,29 @@ iframe {
   @include flex;
   justify-content: flex-start;
   align-items: flex-start;
+
   &-picture {
     @include wh(200px, 200px);
     border-radius: 300px;
     border: 3px $primary solid;
     margin-bottom: 20px;
   }
+
   &-photo {
     @include flexColumn;
   }
+
   &-desc {
     text-align: left;
     margin-left: 50px;
+
     &_userName {
       color: $secondary;
     }
+
     &_email {
       color: $primary;
+
       &:before {
         content: 'Email: ';
         color: $primary-light;
