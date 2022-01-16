@@ -38,7 +38,7 @@ const Weather = ({
             {isFetching ?
                 <Preloader/> :
                 <div>
-                    <h3>В сыктывкаре сейчас {tempColor(temp)} {declOfNum(temp, WeatherData.temp)}, ощущается
+                    <h3>В Сыктывкаре сейчас {tempColor(temp)} {declOfNum(temp, WeatherData.temp)}, ощущается
                         как {tempColor(feelsLike)}</h3>
                     <h3>Давление <span className="secondary">{pressure}</span> мм рт. ст., влажность <span
                         className="secondary">{humidity}%</span>

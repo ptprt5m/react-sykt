@@ -8,10 +8,6 @@ import {
 } from "../redux/placesReducer";
 import Preloader from "./commons/Preloader";
 import img0 from "../img/rest/0.png"
-import img1 from "../img/rest/1.png"
-import img2 from "../img/rest/2.png"
-import img3 from "../img/rest/3.png"
-import img4 from "../img/rest/4.png"
 
 const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                             places, placeInfo, placeInfoId, isFetching, pageSize,
