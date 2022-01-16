@@ -1,0 +1,2 @@
+(this["webpackJsonpsyktyvkar-website"]=this["webpackJsonpsyktyvkar-website"]||[]).push([[3],{283:function(e,c,t){"use strict";t.r(c);t(1);var s=t(0);c.default=function(){return Object(s.jsxs)("div",{children:[Object(s.jsx)("h1",{children:"\u041a\u0430\u0440\u0442\u0430"}),Object(s.jsx)("iframe",{src:"https://yandex.ru/map-widget/v1/?um=constructor%3A77f3d4e05054876ceb806ecf7aac564d93cd90c11ce5823b9ba0f3ddebae966d&source=constructor"})]})}}}]);
+//# sourceMappingURL=3.ff998fd9.chunk.js.map
