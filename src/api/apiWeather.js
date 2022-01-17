@@ -9,7 +9,7 @@ const APIKEY = "762ffa89c6a0dcbb223d92c82037d1ec"
 
 export const weatherAPI = {
     getCurrentWeather(cityName) {
-        return instance.get(`/weather?q=${cityName}&appid=${APIKEY}&units=metric`)
+        return instance.get(`/weather?q=${cityName}&appid=${APIKEY}&units=metric&lang=ru`)
             .then(responsive => responsive.data)
     },
     getHourlyWeather(cityName) {

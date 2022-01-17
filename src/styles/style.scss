@@ -260,13 +260,17 @@ body {
     }
 
     &-about {
-      margin: 35px 5px 0px;
       font-size: 1.3em;
       line-height: 1.5em;
       word-spacing: 0.1em;
-      border-left: 2.5px solid $primary-dark;
-      padding-left: 15px;
+      padding: 0 20px;
       text-align: left;
+      &:not(:first-child) {
+        margin: 35px 0 0px;
+      }
+      &:first-child {
+        margin: 0;
+      }
     }
 
     &-weather {
@@ -390,6 +394,88 @@ body {
         margin: 5px 0;
         color: $secondary;
       }
+    }
+  }
+}
+
+.about {
+  &__wrapper {
+    @include flexColumn;
+    align-items: flex-start;
+    border-left: 2.5px solid $primary-dark;
+    &-img {
+      @include wh(100%);
+      padding: 0 20px;
+      margin: 35px 0 0;
+    }
+    &-span {
+      font-size: 0.85em;
+      color: $darkGray;
+      padding: 0 20px;
+      margin-top: 10px;
+    }
+    &-block {
+      @include flexColumn;
+    }
+  }
+}
+
+.weather {
+  &__wrapper {
+    &-links {
+      @include flex;
+      .active {
+        background: $main-bg;
+        color: $secondary;
+      }
+    }
+    &-link {
+      @include wh(20%);
+      @include links(.2s all, $secondary);
+      color: $secondary-text;
+      border-radius: 20px 20px 0 0;
+      padding: 7px 15px;
+      background: $light-bg;
+      transition: .3s all;
+      &:hover, &:focus, &:active {
+        cursor: pointer;
+      }
+    }
+    &-content {
+      @include flexColumn;
+      align-items: flex-start;
+      background: $main-bg;
+      padding: 30px;
+      border-radius: 0 0 20px 20px;
+    }
+    &-block {
+      @include flex;
+      justify-content: center;
+      &_temp {
+        font-size: 3em;
+        margin: 0;
+      }
+      &-right {
+        text-align: left;
+      }
+      &-pressure, &-humidity, &-wind {
+        @include flex;
+      }
+    }
+    &-down {
+      @include flex;
+      div {
+        margin-right: 40px;
+      }
+    }
+    &-miniIcon {
+      @include wh(35px, 35px);
+      margin-right: 10px;
+    }
+    &-icon {
+      border-radius: 20px;
+      background-color: $main-bg;
+      margin: 0 20px;
     }
   }
 }

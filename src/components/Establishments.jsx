@@ -25,6 +25,10 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
         getInfo2GISTC(lat, lon, placeInfoId)
     }
 
+    let to2GIS = (lon, lat) => {
+        return `https://2gis.ru/syktyvkar/geo/${lon},${lat}?m=${lon},${lat}/17.52`
+    }
+
     return (
         <div className="wrapper">
             <h1>Кафе и рестораны</h1>
@@ -48,7 +52,7 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                                             <div>
                                                 <p>Адрес: {placeInfo[0].address_name || 'Нет информации'}</p>
                                                 <p>Тип строения: {placeInfo[0].purpose_name || 'Нет информации'}</p>
-                                                <a target="_blank" href="/">Перейти в 2GIS</a>
+                                                <a target="_blank" href={to2GIS(p.geometry.coordinates[0], p.geometry.coordinates[1])}>Перейти в 2GIS</a>
                                             </div> : null}
                                         <p>Координаты: {p.geometry.coordinates[0] + ' ' + p.geometry.coordinates[1]}</p>
                                     </div>

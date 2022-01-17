@@ -22,7 +22,7 @@ import Preloader from "./components/commons/Preloader";
 
 const Stars = React.lazy(() => import('./components/Stars'));
 const Map = React.lazy(() => import('./components/Map'));
-const Weather = React.lazy(() => import('./components/Weather'));
+const Weather = React.lazy(() => import('./components/Weather/Weather'));
 
 function App(props) {
 
@@ -48,7 +48,7 @@ function App(props) {
                         <Route exact path='/establishments' element={<Establishments/>}/>
                         <Route exact path='/stars' element={<Stars/>}/>
                         <Route exact path='/map' element={<Map/>}/>
-                        <Route exact path='/weather' element={<Weather/>}/>
+                        <Route path='/weather' element={<Weather/>}/>
                         <Route exact path='/about' element={<About/>}/>
                         <Route exact path='/feedback' element={<Feedback/>}/>
                         <Route exact path='/profile' element={<Profile/>}/>
