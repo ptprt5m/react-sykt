@@ -2,22 +2,12 @@ import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import {getHourlyWeatherDataTC, getWeatherDataTC} from "../../redux/weatherReducer";
 import Preloader from "../commons/Preloader";
-import {windDegMaker} from '../../data/weather-data'
-import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
-import pressureIcon from '../../img/weather/barometer.png'
-import humidityIcon from '../../img/weather/drop.png'
-import windIcon from '../../img/weather/wind.png'
-import Homepage from "../Homepage";
-import About from "../About";
-import Attractions from "../Attractions";
-import Establishments from "../Establishments";
-import Feedback from "../Feedback";
-import Profile from "../Profile/Profile";
-import Login from "../Login";
-import Forgot from "../Forgot";
-import SignUp from "../SignUp";
+import {NavLink} from "react-router-dom";
 import WeatherNow from "./WeatherNow";
+import {Route, Routes} from "react-router";
 import WeatherToday from "./WeatherToday";
+import WeatherTomorrow from "./WeatherTomorrow";
+import WeatherFiveDays from "./WeatherFiveDays";
 
 const Weather = ({
                      weatherData, temp, feelsLike, pressure, humidity, windSpeed, weatherList,
@@ -51,30 +41,28 @@ const Weather = ({
         <div className="wrapper">
             <h1>Погода</h1>
             <div className="weather__wrapper-links">
-                <NavLink to="/weather" className="weather__wrapper-link">Сейчас</NavLink>
-                <NavLink to="/weather/today" className="weather__wrapper-link">Сегодня</NavLink>
-                <NavLink to="/weather/tomorrow" className="weather__wrapper-link">Завтра</NavLink>
-                <NavLink to="/weather/then" className="weather__wrapper-link">Потом</NavLink>
+                <NavLink to="now" className="weather__wrapper-link">Сейчас</NavLink>
+                <NavLink to="today" className="weather__wrapper-link">Сегодня</NavLink>
+                <NavLink to="tomorrow" className="weather__wrapper-link">Завтра</NavLink>
+                <NavLink to="fiveDays" className="weather__wrapper-link">5 дней</NavLink>
             </div>
             {isFetching ?
                 <Preloader/> :
-                <div>
-                    {/*<Route exact path='/' element={<WeatherNow tempColor={tempColor} temp={temp} feelsLike={feelsLike}*/}
-                    {/*                                           pressure={pressure}*/}
-                    {/*                                           humidity={humidity} windSpeed={windSpeed}*/}
-                    {/*                                           windDeg={windDeg}*/}
-                    {/*                                           weatherIcon={weatherIcon} weatherInfo={weatherInfo}/>}/>*/}
-                    {/*<Route exact path='/weather/today'*/}
-                    {/*       element={<WeatherToday tempColor={tempColor} temp={temp} feelsLike={feelsLike}*/}
-                    {/*                              pressure={pressure}*/}
-                    {/*                              humidity={humidity} windSpeed={windSpeed} windDeg={windDeg}*/}
-                    {/*                              weatherIcon={weatherIcon} weatherInfo={weatherInfo}/>}/>*/}
+                <div className="weather__wrapper-qwe">
+                    <Routes>
+                        <Route exact path='now' element={<WeatherNow tempColor={tempColor} temp={temp} feelsLike={feelsLike}
+                                                                   pressure={pressure}
+                                                                   humidity={humidity} windSpeed={windSpeed}
+                                                                   windDeg={windDeg}
+                                                                   weatherIcon={weatherIcon} weatherInfo={weatherInfo}/>}/>
+                        <Route exact path='today' element={<WeatherToday />}/>
+                        <Route exact path='tomorrow' element={<WeatherTomorrow />}/>
+                        <Route exact path='fiveDays' element={<WeatherFiveDays />}/>
+                    </Routes>
 
-                    <WeatherNow tempColor={tempColor} temp={temp} feelsLike={feelsLike}
-                                pressure={pressure}
-                                humidity={humidity} windSpeed={windSpeed}
-                                windDeg={windDeg}
-                                weatherIcon={weatherIcon} weatherInfo={weatherInfo}/>
+
+
+
                     {/*<div className="weather__wrapper-block" >*/}
                     {/*    <p className="weather__wrapper-block_temp">{tempColor(temp)}°C</p>*/}
                     {/*    <img className="weather__wrapper-icon" src={getWeatherIcon(weatherIcon)} alt="weatherIcon"/>*/}

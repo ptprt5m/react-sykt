@@ -118,32 +118,25 @@ body {
   }
 
   &__section-right {
-
     .active {
       color: $secondary;
     }
-
     a {
       @include links(.2s all, $secondary);
     }
-
     ul {
       margin: 0 10px 0 0;
     }
   }
-
   &__item {
     padding: 10px 15px;
     margin: 0 10px;
-
     a {
       color: $primary-text;
     }
   }
-
   &__logo {
     font-size: 1.7em;
-
     &:hover {
       cursor: pointer;
     }
@@ -257,20 +250,6 @@ body {
   &__wrapper {
     @include flex {
       justify-content: center;
-    }
-
-    &-about {
-      font-size: 1.3em;
-      line-height: 1.5em;
-      word-spacing: 0.1em;
-      padding: 0 20px;
-      text-align: left;
-      &:not(:first-child) {
-        margin: 35px 0 0px;
-      }
-      &:first-child {
-        margin: 0;
-      }
     }
 
     &-weather {
@@ -398,27 +377,44 @@ body {
   }
 }
 
+// About styles start
+
 .about {
   &__wrapper {
     @include flexColumn;
     align-items: flex-start;
     border-left: 2.5px solid $primary-dark;
-    &-img {
-      @include wh(100%);
+    &-text {
+      font-size: 1.3em;
+      line-height: 1.5em;
+      word-spacing: 0.1em;
       padding: 0 20px;
-      margin: 35px 0 0;
-    }
-    &-span {
-      font-size: 0.85em;
-      color: $darkGray;
-      padding: 0 20px;
-      margin-top: 10px;
+      text-align: left;
+      &:not(:first-child) {
+        margin: 35px 0 0px;
+      }
+      &:first-child {
+        margin: 0;
+      }
     }
     &-block {
       @include flexColumn;
+      &_img {
+        @include wh(100%);
+        padding: 0 20px;
+        margin: 35px 0 0;
+      }
+      &_span {
+        font-size: 0.85em;
+        color: $darkGray;
+        padding: 0 20px;
+        margin-top: 10px;
+      }
     }
   }
 }
+
+//About styles end
 
 .weather {
   &__wrapper {
@@ -441,12 +437,14 @@ body {
         cursor: pointer;
       }
     }
+    &-qwe {
+      background: $main-bg;
+      border-radius: 0 0 20px 20px;
+      padding: 30px 50px;
+    }
     &-content {
       @include flexColumn;
       align-items: flex-start;
-      background: $main-bg;
-      padding: 30px;
-      border-radius: 0 0 20px 20px;
     }
     &-block {
       @include flex;
@@ -554,7 +552,7 @@ iframe {
     color: $secondary-text;
   }
 
-  .homepageLinks__item {
+  &-item {
     @include flexColumn;
     justify-content: center;
     padding: 30px 40px;
@@ -564,7 +562,6 @@ iframe {
     max-width: 250px;
     margin: 10px 10px;
     transition: .2s all;
-
     &:hover, &:active, &:focus {
       background: $main-bg;
       border: 3px solid $secondary-text;
@@ -572,19 +569,19 @@ iframe {
         background: $primary-text;
       }
     }
-
-    &-title {
-      margin: 0;
-    }
-
-    &-icon {
+    &_icon {
       @include wh(100px, 100px);
       border-radius: 20px;
       padding: 10px;
       margin-bottom: 10px;
     }
+    &_title {
+      margin: 0;
+    }
   }
 }
+
+//Homepage Links styles end
 
 .wrapper__profile {
   @include flex;

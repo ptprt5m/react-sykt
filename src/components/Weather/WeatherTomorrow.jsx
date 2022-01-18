@@ -1,10 +1,10 @@
 import React from 'react'
 
-const WeatherToday = () => {
+const WeatherTomorrow = () => {
 
     return (
         <div className="weather__wrapper-content">
-            Погода на сегодня
+            Погода на завтра
             <span className='secondary'
                   style={{fontSize: '1.5em', margin: '10px 0'}}>
                 Извините, функция находится в разработке</span>
@@ -12,4 +12,4 @@ const WeatherToday = () => {
     )
 }
 
-export default WeatherToday
+export default WeatherTomorrow

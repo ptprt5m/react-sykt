@@ -1,12 +1,8 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import LazyLoad from "react-lazyload";
 import StarsData from "../data/stars-data"
 
 const Stars = () => {
-
-    // useEffect(() => {
-    //
-    // }, [])
 
     return (
         <div className="wrapper">

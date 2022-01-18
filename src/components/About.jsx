@@ -11,7 +11,7 @@ const About = () => {
         <div className="wrapper">
             <h1>Подробнее о городе</h1>
             <div className="about__wrapper">
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Город основан <span className="secondary">5 февраля 1780 года</span> по Указу Екатерины II.
                     Первоначальное его название — <span className="secondary">Усть-Сысольск</span>.
                     В <span className="secondary">1930</span> году город переименован в Сыктывкар. Это название в переводе с
@@ -20,14 +20,14 @@ const About = () => {
                 </p>
                 <div className="about__wrapper-block">
                     <LazyLoad height={400}>
-                        <img className="about__wrapper-img" src={river} alt="river" />
+                        <img className="about__wrapper-block_img" src={river} alt="river" />
                     </LazyLoad>
-                    <span className="about__wrapper-span">Река Сысола</span>
+                    <span className="about__wrapper-block_span">Река Сысола</span>
                 </div>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Сыктывкар является административным центром Республики Коми.
                 </p>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Город расположен на северо-востоке Европейской части России в <span className="secondary">1410</span> км
                     к северо-востоку
                     от Москвы. Сыктывкар раскинулся на берегах двух рек — Сысолы и Вычегды в окружении лесов. Общая
@@ -35,25 +35,25 @@ const About = () => {
                 </p>
                 <div className="about__wrapper-block">
                     <LazyLoad height={400}>
-                        <img className="about__wrapper-img" src={up} alt="up" />
+                        <img className="about__wrapper-block_img" src={up} alt="up" />
                     </LazyLoad>
-                    <span className="about__wrapper-span">Город с высоты птичьего полета</span>
+                    <span className="about__wrapper-block_span">Город с высоты птичьего полета</span>
                 </div>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Климат в Сыктывкаре умеренно-континентальный, с продолжительной, довольно суровой зимой и коротким,
                     сравнительно тёплым летом. Средняя температура января — <span
                     className="blue">минус 15</span> градусов С, июля — <span
                     className="red">плюс 17</span> градусов С. Осадков выпадает около <span
                     className="secondary">650</span> мм в год.
                 </p>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Сыктывкар — многонациональный город. Здесь проживает около <span className="secondary">250</span> тысяч
                     жителей – это
                     представители более <span className="secondary">70</span> национальностей. В городе действуют различные
                     национальные
                     общества.
                 </p>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Сыктывкар — большой промышленный центр. В городе работает около <span
                     className="secondary">40</span> промышленных
                     предприятий, одна треть которых имеет всероссийское значение. Среди них крупнейшее в Европе
@@ -67,11 +67,11 @@ const About = () => {
                 </p>
                 <div className="about__wrapper-block">
                     <LazyLoad height={400}>
-                        <img className="about__wrapper-img" src={mondi} alt="mondi" />
+                        <img className="about__wrapper-block_img" src={mondi} alt="mondi" />
                     </LazyLoad>
-                    <span className="about__wrapper-span">ОАО «Монди Сыктывкарский ЛПК»</span>
+                    <span className="about__wrapper-block_span">ОАО «Монди Сыктывкарский ЛПК»</span>
                 </div>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Кроме того, Сыктывкар – один из крупнейших научных центров на Европейском Севере России. В городе
                     насчитывается порядка <span className="secondary">30</span> специализированных учреждений,
                     осуществляющих
@@ -91,11 +91,11 @@ const About = () => {
                 </p>
                 <div className="about__wrapper-block">
                     <LazyLoad height={400}>
-                        <img className="about__wrapper-img" src={sgu} alt="sgu" />
+                        <img className="about__wrapper-block_img" src={sgu} alt="sgu" />
                     </LazyLoad>
-                    <span className="about__wrapper-span">Сыктывкарский Государственный Университет им. Питирима Сорокина</span>
+                    <span className="about__wrapper-block_span">Сыктывкарский Государственный Университет им. Питирима Сорокина</span>
                 </div>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Сыктывкар – культурная столица республики. В городе работает Республиканский театр оперы и балета
                     Республики Коми, Национальный музыкально-драматический театр Республики Коми, Государственный
                     академический театр драмы <span className="secondary">им. В. А. Савина</span>, а также один из любимых
@@ -111,15 +111,15 @@ const About = () => {
                 </p>
                 <div className="about__wrapper-block">
                     <LazyLoad height={400}>
-                        <img className="about__wrapper-img" src={drama} alt="drama" />
+                        <img className="about__wrapper-block_img" src={drama} alt="drama" />
                     </LazyLoad>
-                    <span className="about__wrapper-span">Республиканский театр оперы и балета Республики Коми</span>
+                    <span className="about__wrapper-block_span">Республиканский театр оперы и балета Республики Коми</span>
                 </div>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     В Сыктывкаре функционируют крупнейший в республике плавательный бассейн и Центральный стадион
                     республиканского значения.
                 </p>
-                <p className="main__wrapper-about">
+                <p className="about__wrapper-text">
                     Столица Коми поддерживает дружеские связи с зарубежными городами, пять из которых являются
                     городами-побратимами Сыктывкара: г. Тайюань (<span
                     className="gold">Китай, провинция Шанси</span>), г. Лос-Алтос (<span
