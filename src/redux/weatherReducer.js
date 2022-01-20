@@ -11,7 +11,6 @@ const SET_WEATHER_LIST = 'weatherReducer/SET_WEATHER_LIST'
 const SET_WEATHER_ICON = 'weatherReducer/SET_WEATHER_ICON'
 const SET_WEATHER_INFO = 'weatherReducer/SET_WEATHER_INFO'
 const TOGGLE_IS_FETCHING = 'weatherReducer/TOGGLE_IS_FETCHING'
-const TOGGLE_IS_MINI_FETCHING = 'weatherReducer/TOGGLE_IS_MINI_FETCHING'
 
 let initialState = {
     weatherData: {},
@@ -25,8 +24,7 @@ let initialState = {
     weatherList: [],
     weatherIcon: null,
     weatherInfo: null,
-    isFetching: false,
-    isMiniFetching: false
+    isFetching: false
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -97,12 +95,6 @@ const weatherReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             };
         }
-        case TOGGLE_IS_MINI_FETCHING: {
-            return {
-                ...state,
-                isMiniFetching: action.isMiniFetching
-            };
-        }
         default:
             return state;
     }
@@ -120,7 +112,6 @@ export const setWeatherList = (weatherList) => ({type: SET_WEATHER_LIST, weather
 export const setWeatherIcon = (weatherIcon) => ({type: SET_WEATHER_ICON, weatherIcon})
 export const setWeatherInfo = (info) => ({type: SET_WEATHER_INFO, info})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-export const toggleIsMiniFetching = (isMiniFetching) => ({type: TOGGLE_IS_MINI_FETCHING, isMiniFetching})
 
 export const getWeatherDataTC = () => {
     return (dispatch) => {
@@ -147,12 +138,12 @@ export const getWeatherDataTC = () => {
 
 export const getHourlyWeatherDataTC = () => {
     return (dispatch) => {
-        dispatch(toggleIsMiniFetching(true))
+        dispatch(toggleIsFetching(true))
         weatherAPI.getHourlyWeather('Syktyvkar')
             .then(data => {
                     if (data.cod === '200') {
                         dispatch(setWeatherList(data.list))
-                        dispatch(toggleIsMiniFetching(false))
+                        dispatch(toggleIsFetching(false))
                     }
                 }
             );

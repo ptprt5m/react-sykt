@@ -40,7 +40,7 @@ const HomepageLinks = () => {
                     <p className='homepageLinks__wrapper-item_title'>Карта</p>
                 </div>
             </Link>
-            <Link to={"/weather"}>
+            <Link to={"/weather/now"}>
                 <div className='homepageLinks__wrapper-item'>
                     <img className='homepageLinks__wrapper-item_icon' src={weather} alt="weather"/>
                     <p className='homepageLinks__wrapper-item_title'>Погода</p>

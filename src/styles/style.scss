@@ -253,42 +253,48 @@ body {
     }
 
     &-weather {
-      @include flexColumn;
-      @include wh;
+      @include flex;
+      justify-content: center;
+      @include wh(100%);
       margin: 0 auto;
 
       &-block {
-        @include flex;
+        @include flexColumn;
         @include wh;
         justify-content: flex-start;
-        background: $primary-text;
+        border: 3px dashed $primary;
         border-radius: 20px;
-        border: 2px $primary-dark solid;
         padding: 10px 20px;
-        margin-top: 4vh;
-        margin-bottom: 20px;
+        margin: 0 10px;
+
+        h3 {
+          font-size: 1.7em;
+          margin: 0;
+        }
 
         div {
           @include flexColumn;
           justify-content: flex-start;
-          align-items: flex-start;
-          h3, p {
-            margin: 7px 0;
+          p {
+            margin: 0 0 15px;
           }
         }
 
-        img {
-          background: $main-bg;
-          border-radius: 20px;
-          margin-right: 20px;
-        }
-
         &-right {
-          padding: 5px 0;
-        }
-
-        &:not(:first-child) {
-          margin-top: 6vh;
+          @include flexColumn;
+          align-items: center;
+          &_temp {
+            @include flex;
+            font-size: 3em;
+            margin: 0;
+          }
+          &_wind {
+            @include flex;
+          }
+          &_miniIcon {
+            @include wh(35px, 35px);
+            margin: 0 10px;
+          }
         }
       }
     }

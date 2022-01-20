@@ -20,7 +20,7 @@ const Header = ({isAuth, userLogout}) => {
                                 <li><NavLink to="/stars">Известные личности</NavLink></li>
                                 <li><NavLink to="/establishments">Вкусно поесть</NavLink></li>
                                 <li><NavLink to="/map">Карта</NavLink></li>
-                                <li><NavLink to="/weather">Погода</NavLink></li>
+                                <li><NavLink to="/weather/now">Погода</NavLink></li>
                                 <li><NavLink to="/about">О городе</NavLink></li>
                             </ul>
                         </li>
