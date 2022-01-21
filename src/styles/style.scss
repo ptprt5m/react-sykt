@@ -255,13 +255,14 @@ body {
     &-weather {
       @include flex;
       justify-content: center;
+      flex-wrap: wrap;
       @include wh(100%);
       margin: 0 auto;
 
       &-block {
         @include flexColumn;
-        @include wh;
-        justify-content: flex-start;
+        width: 20%;
+        height: 310px;
         border: 3px dashed $primary;
         border-radius: 20px;
         padding: 10px 20px;

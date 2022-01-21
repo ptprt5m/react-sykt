@@ -53,7 +53,9 @@ const Weather = () => {
                                                                      getWeatherIcon={getWeatherIcon}
                                                                      capitalizeFirstLetter={capitalizeFirstLetter}
                     />}/>
-                    <Route exact path='tomorrow' element={<WeatherTomorrow/>}/>
+                    <Route exact path='tomorrow' element={<WeatherTomorrow tempColor={tempColor}
+                                                                           getWeatherIcon={getWeatherIcon}
+                                                                           capitalizeFirstLetter={capitalizeFirstLetter}/>}/>
                     <Route exact path='fiveDays' element={<WeatherFiveDays/>}/>
                     <Route exact path='' element={<h3>Выбирайте время или дату выше</h3>}/>
                 </Routes>

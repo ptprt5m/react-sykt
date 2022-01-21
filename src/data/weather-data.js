@@ -41,4 +41,15 @@ export function getTodayDate() {
     return today = yyyy + '-' + mm + '-' + dd;
 }
 
+export function getTomorrowDate() {
+    let today = new Date()
+    let tomorrow = new Date(today)
+
+    let dd = String(tomorrow.getDate() + 1).padStart(2, '0');
+    let mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    let yyyy = tomorrow.getFullYear();
+
+    return tomorrow = yyyy + '-' + mm + '-' + dd;
+}
+
 export default WeatherData
