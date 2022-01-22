@@ -261,16 +261,18 @@ body {
 
       &-block {
         @include flexColumn;
-        width: 20%;
+        display: flex !important;
         height: 310px;
-        border: 3px dashed $primary;
-        border-radius: 20px;
-        padding: 10px 20px;
-        margin: 0 10px;
+        padding: 10px 0;
+
+        img {
+          display: inline-block;
+        }
 
         h3 {
           font-size: 1.7em;
           margin: 0;
+          color: $primary-dark;
         }
 
         div {
@@ -288,6 +290,9 @@ body {
             @include flex;
             font-size: 3em;
             margin: 0;
+          }
+          &_info {
+            @include wh(100px)
           }
           &_wind {
             @include flex;
@@ -429,12 +434,11 @@ body {
       @include flex;
       .active {
         background: $main-bg;
-        color: $secondary;
       }
     }
     &-link {
       @include wh(20%);
-      @include links(.2s all, $secondary);
+      @include links(.2s all, $primary);
       color: $secondary-text;
       border-radius: 20px 20px 0 0;
       padding: 7px 15px;
@@ -479,7 +483,6 @@ body {
     }
     &-icon {
       border-radius: 20px;
-      background-color: $main-bg;
       margin: 0 20px;
     }
   }

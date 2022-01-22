@@ -52,4 +52,8 @@ export function getTomorrowDate() {
     return tomorrow = yyyy + '-' + mm + '-' + dd;
 }
 
+export function getFiveDays() {
+
+}
+
 export default WeatherData

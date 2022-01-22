@@ -56,57 +56,12 @@ const Weather = () => {
                     <Route exact path='tomorrow' element={<WeatherTomorrow tempColor={tempColor}
                                                                            getWeatherIcon={getWeatherIcon}
                                                                            capitalizeFirstLetter={capitalizeFirstLetter}/>}/>
-                    <Route exact path='fiveDays' element={<WeatherFiveDays/>}/>
+                    <Route exact path='fiveDays' element={<WeatherFiveDays tempColor={tempColor}
+                                                                           getWeatherIcon={getWeatherIcon}
+                                                                           capitalizeFirstLetter={capitalizeFirstLetter}/>}/>
                     <Route exact path='' element={<h3>Выбирайте время или дату выше</h3>}/>
                 </Routes>
-
-
-                {/*<div className="weather__wrapper-block" >*/}
-                {/*    <p className="weather__wrapper-block_temp">{tempColor(temp)}°C</p>*/}
-                {/*    <img className="weather__wrapper-icon" src={getWeatherIcon(weatherIcon)} alt="weatherIcon"/>*/}
-                {/*    <div className="weather__wrapper-block-right">*/}
-                {/*        <p>{weatherInfo && capitalizeFirstLetter(weatherInfo)}</p>*/}
-                {/*        <p>Ощущается как {tempColor(feelsLike)}°C</p>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                {/*<div className="weather__wrapper-down">*/}
-                {/*    <div className="weather__wrapper-block-wind">*/}
-                {/*        <img className="weather__wrapper-miniIcon" src={windIcon} alt="wind_icon"/>*/}
-                {/*        <p><span className="secondary">{windSpeed}</span> м/c, дует на <span className="secondary">{windDegMaker(windDeg)}</span></p>*/}
-                {/*    </div>*/}
-                {/*    <div className="weather__wrapper-block-humidity">*/}
-                {/*        <img className="weather__wrapper-miniIcon" src={humidityIcon} alt="humidity_icon"/>*/}
-                {/*        <p><span className="secondary">{humidity}%</span></p>*/}
-                {/*    </div>*/}
-                {/*    <div className="weather__wrapper-block-pressure">*/}
-                {/*        <img className="weather__wrapper-miniIcon" src={pressureIcon} alt="pressure_icon"/>*/}
-                {/*        <p><span className="secondary">{pressure}</span> мм рт. ст.</p>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
-
-            {/*{isMiniFetching ?*/}
-            {/*    <Preloader/> :*/}
-            {/*    <div className="main__wrapper-weather">*/}
-            {/*        {weatherList.map(weatherDay => {*/}
-            {/*            return (*/}
-            {/*                <div className="main__wrapper-weather-block">*/}
-            {/*                    <img src={getWeatherIcon(weatherDay.weather[0].icon)} alt=""/>*/}
-            {/*                    <div className="main__wrapper-weather-block-right">*/}
-            {/*                        <h3>Дата <span className="secondary">{weatherDay.dt_txt}</span></h3>*/}
-            {/*                        <p>{capitalizeFirstLetter(weatherDay.weather[0].description)}</p>*/}
-            {/*                        <p>{tempColor(Math.round(weatherDay.main.temp))}°C, ощущается*/}
-            {/*                            как {tempColor(Math.round(weatherDay.main.feels_like))}°C</p>*/}
-            {/*                        <p>Ветер <span className="secondary">{weatherDay.wind.speed}</span> м/с</p>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            )*/}
-            {/*        })}*/}
-            {/*    </div>*/}
-            {/*}*/}
-            {/*<button onClick={() => getHourlyWeatherDataTC()} className="all__button">*/}
-            {/*    Получить погоду на другие дни*/}
-            {/*</button>*/}
         </div>
     )
 }
