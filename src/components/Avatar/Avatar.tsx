@@ -1,16 +1,24 @@
-import classes from './Avatar.module.css'
 import React from "react";
+import classes from './Avatar.module.css'
 import userPhoto from '../../img/user.jpg'
-import Preloader from "../commons/Preloader";
+import Preloader from '../commons/Preloader';
 
-const Avatar = ({userProfile, isOwner, savePhoto}) => {
+type Props = {
+    userProfile: any
+    isOwner: boolean
+    savePhoto: React.ChangeEventHandler<HTMLInputElement>
+}
+
+const Avatar: React.FC<Props> = ({userProfile, isOwner, savePhoto}) => {
 
     if (!userProfile) {
         <Preloader/>
     }
 
-    const onMainPhotoSelected = (e) => {
+    const onMainPhotoSelected: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        // @ts-ignore
         if (e.target.files.length) {
+            // @ts-ignore
             savePhoto(e.target.files[0])
         }
     }

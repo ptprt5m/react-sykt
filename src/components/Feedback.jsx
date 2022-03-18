@@ -3,7 +3,6 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../Utils/FormControls";
 import {required} from "../Utils/validators";
 import {connect} from "react-redux";
-import {sendFeedback} from "../redux/feedbackReducer";
 
 const FeedbackForm = (props) => {
     debugger
@@ -36,7 +35,7 @@ let FeedbackReduxForm = reduxForm({form: 'feedback'})(FeedbackForm)
 const Feedback = (props) => {
 
     const onSubmit = (formData) => {
-        props.sendFeedback(formData.titleOfFeedback, formData.contentOfFeedback)
+        // props.sendFeedback(formData.titleOfFeedback, formData.contentOfFeedback)
     }
 
     return (
@@ -54,4 +53,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {sendFeedback})(Feedback)
+export default connect(mapStateToProps, {})(Feedback)
