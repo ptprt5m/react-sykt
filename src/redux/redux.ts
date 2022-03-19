@@ -1,10 +1,10 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import loginReducer from "./loginReducer";
-import {reducer as formReducer} from 'redux-form';
-import thunkMiddleware from 'redux-thunk';
-import placesReducer from "./placesReducer";
-import appReducer from "./appReducer";
-import weatherReducer from "./weatherReducer";
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
+import loginReducer from './loginReducer'
+import {reducer as formReducer} from 'redux-form'
+import thunkMiddleware from 'redux-thunk'
+import placesReducer from './placesReducer'
+import appReducer from './appReducer'
+import weatherReducer from './weatherReducer'
 
 let rootReducer = combineReducers({
     login: loginReducer,

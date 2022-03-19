@@ -1,0 +1,15 @@
+.usernameBLock {
+  @include flex;
+}
+
+.edit {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.editIcon {
+  width: 20px;
+  height: 20px;
+}

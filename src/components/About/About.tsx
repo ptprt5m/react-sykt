@@ -1,10 +1,10 @@
 import React from 'react'
-import river from '../img/about/sysola.jpg'
-import up from '../img/about/up.jpg'
-import mondi from '../img/about/mondi.jpg'
-import sgu from '../img/about/sgu.jpg'
-import drama from '../img/about/drama.jpg'
-import LazyLoad from "react-lazyload";
+import river from '../../img/about/sysola.jpg'
+import up from '../../img/about/up.jpg'
+import mondi from '../../img/about/mondi.jpg'
+import sgu from '../../img/about/sgu.jpg'
+import drama from '../../img/about/drama.jpg'
+import LazyLoad from 'react-lazyload'
 
 const About = () => {
     return (

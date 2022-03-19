@@ -1,6 +1,6 @@
 import React from 'react'
 import LazyLoad from 'react-lazyload'
-import AttractionsData from '../data/attractions-data'
+import AttractionsData from '../../data/attractions-data'
 
 const Attractions = () => {
     return (

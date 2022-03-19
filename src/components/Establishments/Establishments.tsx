@@ -1,15 +1,35 @@
 import React, {useEffect} from 'react'
-import {connect} from "react-redux";
+import {connect} from 'react-redux'
 import {
     getInfo2GISTC,
-    getPlacesDataTC,
+    getPlacesDataTC, PlaceType, InfoPlaceType,
     setNewPlacesTC,
     setPageSize
-} from "../redux/placesReducer";
-import Preloader from "./commons/Preloader";
-import img0 from "../img/rest/0.png"
+} from '../../redux/placesReducer'
+import Preloader from '../commons/Preloader'
+import img0 from '../../img/rest/0.png'
+import {AppStateType} from "../../redux/redux";
 
-const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
+type MapStatePropsType = {
+    places: Array<PlaceType> | null
+    placeInfo: Array<InfoPlaceType> | null
+    placeInfoId: string | null
+    isFetching: boolean
+    isMiniFetching: boolean
+    pageSize: number
+    totalPlacesCount: number
+}
+
+type MapDispatchPropsType = {
+    getPlacesDataTC: (pageSize: number) => void
+    setNewPlacesTC: (pageSize: number) => void
+    getInfo2GISTC: (lat: number, lon: number, placeInfoId: string) => void
+    setPageSize: (pageSize: number) => void
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType
+
+const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
                             places, placeInfo, placeInfoId, isFetching, pageSize,
                             totalPlacesCount, setPageSize, isMiniFetching}) => {
 
@@ -21,11 +41,11 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
         setNewPlacesTC(pageSize)
     }, [pageSize])
 
-    let getInfo2GIS = (lat, lon, placeInfoId) => {
+    let getInfo2GIS = (lat: number, lon: number, placeInfoId: string) => {
         getInfo2GISTC(lat, lon, placeInfoId)
     }
 
-    let to2GIS = (lon, lat) => {
+    let to2GIS = (lon: number, lat: number) => {
         return `https://2gis.ru/syktyvkar/geo/${lon},${lat}?m=${lon},${lat}/17.52`
     }
 
@@ -75,7 +95,7 @@ const Establishments = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
     )
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         places: state.places.places,
         placeInfo: state.places.placeInfo,

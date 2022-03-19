@@ -613,8 +613,32 @@ iframe {
     text-align: left;
     margin-left: 50px;
 
+    &_usernameBlock {
+      @include flex;
+      justify-content: flex-start;
+    }
+
+    &_button {
+      margin: 0 0 0 12px;
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    &_icon {
+      width: 20px;
+      height: 20px;
+    }
+
     &_userName {
       color: $secondary;
+      margin: 10px 0;
+    }
+
+    &_userNameInput {
+      padding: 0;
+      margin: 10px 0;
     }
 
     &_email {

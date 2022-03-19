@@ -1,15 +1,27 @@
 import React from 'react'
-import {Field, reduxForm} from "redux-form";
-import {Input, Textarea} from "../Utils/FormControls";
-import {required} from "../Utils/validators";
-import {connect} from "react-redux";
+import {Field, reduxForm} from 'redux-form'
+import {Input, Textarea} from '../../Utils/FormControls'
+import {required} from '../../Utils/validators'
+import {connect} from 'react-redux'
+import {AppStateType} from '../../redux/redux'
 
-const FeedbackForm = (props) => {
+type MapStatePropsType = {
+    email: string | null
+}
+
+type OwnPropsType = {
+    handleSubmit: () => void
+    onSubmit: () => void
+}
+
+type FeedbackFormPropsType = MapStatePropsType & OwnPropsType
+
+const FeedbackForm: React.FC<FeedbackFormPropsType> = ({email, handleSubmit, onSubmit}) => {
     debugger
     return (
-        <form onSubmit={props.handleSubmit} className="main__form">
+        <form onSubmit={handleSubmit} className="main__form">
             <h2 className="main__form-title">Обратная связь</h2>
-            {props.email === null ?
+            {email === null ?
                 <Field name={'emailForFeedback'}
                        component={Input}
                        placeholder={'Ваш Email'}
@@ -25,29 +37,33 @@ const FeedbackForm = (props) => {
                    placeholder={'Текст обращения'}
                    validate={[required]}
             />
-            <button onSubmit={props.onSubmit} className="main__form-button">Отправить</button>
+            <button onSubmit={onSubmit} className="main__form-button">Отправить</button>
         </form>
     )
 }
 
-let FeedbackReduxForm = reduxForm({form: 'feedback'})(FeedbackForm)
+//let FeedbackReduxForm = reduxForm({form: 'feedback'})(FeedbackForm)
 
-const Feedback = (props) => {
+type FeedbackPropsType = {
+    email: string | null
+}
 
-    const onSubmit = (formData) => {
+const Feedback: React.FC<FeedbackPropsType> = ({email}) => {
+
+    const onSubmit = (formData: any) => {
         // props.sendFeedback(formData.titleOfFeedback, formData.contentOfFeedback)
     }
 
     return (
         <div className="wrapper">
             <div className="main__wrapper">
-                <FeedbackReduxForm email={props.email} onSubmit={onSubmit}/>
+                {/*<FeedbackReduxForm email={email} onSubmit={onSubmit}/>*/}
             </div>
         </div>
     )
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         email: state.login.email
     }

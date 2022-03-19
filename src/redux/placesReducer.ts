@@ -10,10 +10,44 @@ const TOGGLE_IS_FETCHING = 'weatherReducer/TOGGLE_IS_FETCHING'
 const TOGGLE_IS_MINI_FETCHING = 'weatherReducer/TOGGLE_IS_MINI_FETCHING'
 const SET_TOTAL_PLACES_COUNT = 'weatherReducer/SET_TOTAL_PLACES_COUNT'
 
+export type InfoPlaceType = {
+    full_name: string
+    id: string
+    name: string
+    point: {
+        lat: number
+        lon: number
+    }
+    subtype: string
+    type: string
+    address_name?: string
+    purpose_name?: string
+}
+
+type PropertiesType = {
+    xid: string
+    name: string
+    rate: number
+    osm: string
+    kinds: string
+}
+
+type GeometryType = {
+    type: string
+    coordinates: Array<number>
+}
+
+export type PlaceType = {
+    type: string
+    id: string
+    geometry: GeometryType
+    properties: PropertiesType
+}
+
 type initialStateType = {
-    places: object | null
-    placeInfo: string | null
-    placeInfoId: number | null
+    places: Array<PlaceType> | null
+    placeInfo: Array<InfoPlaceType> | null
+    placeInfoId: string | null
     isFetching: boolean
     isMiniFetching: boolean
     pageSize: number
@@ -80,15 +114,15 @@ const placesReducer = (state = initialState, action: any): initialStateType => {
 
 type setPlacesType = {
     type: typeof SET_PLACES
-    places: object | null
+    places: Array<PlaceType> | null
 }
 type setInfoPlaceType = {
     type: typeof SET_INFO_PLACE
-    items: Array<string> | null
+    items: Array<InfoPlaceType> | null
 }
 type setInfoPlaceIdType = {
     type: typeof SET_INFO_PLACE_ID
-    placeInfoId: number
+    placeInfoId: string
 }
 type setPageSizeType = {
     type: typeof SET_PAGE_SIZE
@@ -107,9 +141,9 @@ type toggleIsMiniFetchingType = {
     isMiniFetching: boolean
 }
 
-export const setPlaces = (places: object): setPlacesType => ({type: SET_PLACES, places})
-export const setInfoPlace = (items: Array<string>): setInfoPlaceType => ({type: SET_INFO_PLACE, items})
-export const setInfoPlaceId = (placeInfoId: number): setInfoPlaceIdType => ({type: SET_INFO_PLACE_ID, placeInfoId})
+export const setPlaces = (places: Array<PlaceType>): setPlacesType => ({type: SET_PLACES, places})
+export const setInfoPlace = (items: Array<InfoPlaceType>): setInfoPlaceType => ({type: SET_INFO_PLACE, items})
+export const setInfoPlaceId = (placeInfoId: string): setInfoPlaceIdType => ({type: SET_INFO_PLACE_ID, placeInfoId})
 export const setPageSize = (pageSize: number): setPageSizeType => ({type: SET_PAGE_SIZE, pageSize})
 export const setTotalPlacesCount = (totalPlacesCount: number): setTotalPlacesCountType => ({
     type: SET_TOTAL_PLACES_COUNT,
@@ -121,10 +155,10 @@ export const toggleIsMiniFetching = (isMiniFetching: boolean): toggleIsMiniFetch
     isMiniFetching
 })
 
-export const getPlacesDataTC = (pageSize: any) => async (dispatch: any) => {
+export const getPlacesDataTC = (pageSize: number) => async (dispatch: any) => {
     dispatch(toggleIsFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
-debugger
+
     if (response.features) {
         dispatch(setTotalPlacesCount(response.features.length))
         dispatch(setPlaces(response.features))
@@ -132,7 +166,7 @@ debugger
     }
 }
 
-export const setNewPlacesTC = (pageSize: any) => async (dispatch: any) => {
+export const setNewPlacesTC = (pageSize: number) => async (dispatch: any) => {
     dispatch(toggleIsMiniFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
 
@@ -144,7 +178,7 @@ export const setNewPlacesTC = (pageSize: any) => async (dispatch: any) => {
 
 }
 
-export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: number) => async (dispatch: any) => {
+export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: string) => async (dispatch: any) => {
     let response = await twoGisAPI.getInfoAboutTarget(lat, lon)
 
     if (response.meta.code === 200) {

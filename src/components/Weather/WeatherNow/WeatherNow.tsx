@@ -1,13 +1,38 @@
 import React, {useEffect} from 'react'
-import windIcon from "../../img/weather/wind.png";
-import {windDegMaker} from "../../data/weather-data";
-import humidityIcon from "../../img/weather/drop.png";
-import pressureIcon from "../../img/weather/barometer.png";
-import {connect} from "react-redux";
-import {getWeatherDataTC} from "../../redux/weatherReducer";
-import Preloader from "../commons/Preloader";
+import windIcon from '../../../img/weather/wind.png'
+import {windDegMaker} from '../../../data/weather-data'
+import humidityIcon from '../../../img/weather/drop.png'
+import pressureIcon from '../../../img/weather/barometer.png'
+import {connect} from 'react-redux'
+import {getWeatherDataTC} from '../../../redux/weatherReducer'
+import Preloader from '../../commons/Preloader'
+import {AppStateType} from '../../../redux/redux'
 
-const WeatherNow = ({
+type MapStatePropsType = {
+    temp: number | null
+    feelsLike: number | null
+    pressure: number | null
+    humidity: number | null
+    windSpeed: number | null
+    windDeg: number | null
+    weatherIcon: string | null
+    weatherInfo: string | null
+    isFetching: boolean
+}
+
+type MapDispatchPropsType = {
+    getWeatherDataTC: () => void
+}
+
+type OwnPropsType = {
+    tempColor: (temp: number | null) => JSX.Element | null
+    getWeatherIcon: (iconNumber: string | null) => string
+    capitalizeFirstLetter: (weatherInfo: string) => string
+}
+
+type Props = MapStatePropsType & MapDispatchPropsType & OwnPropsType
+
+const WeatherNow: React.FC<Props> = ({
                         temp, feelsLike, pressure, humidity, windSpeed, getWeatherIcon, capitalizeFirstLetter,
                         windDeg, weatherIcon, weatherInfo, tempColor, isFetching, getWeatherDataTC
                     }) => {
@@ -51,7 +76,7 @@ const WeatherNow = ({
     )
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         temp: state.weather.temp,
         feelsLike: state.weather.feelsLike,
@@ -65,6 +90,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
+export default connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
     getWeatherDataTC
 })(WeatherNow)

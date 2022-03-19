@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import windIcon from "../../img/weather/wind.png";
+import windIcon from "../../../img/weather/wind.png";
 
 const WeatherSlick = ({weatherList, getWeatherIcon, capitalizeFirstLetter, tempColor, day}) => {
 

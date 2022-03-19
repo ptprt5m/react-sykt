@@ -1,7 +1,13 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom'
 
-const Header = ({isAuth, userLogout}) => {
+type Props = {
+    isAuth: boolean
+    userLogout: () => void
+}
+
+const Header: React.FC<Props> = ({isAuth, userLogout}) => {
+    debugger
     return (
         <header className="header">
             <div className="header__section-left">
