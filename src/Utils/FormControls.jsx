@@ -23,7 +23,7 @@ export const Input = ({input, meta, ...props}) => {
         <div>
             <div>
                 <input {...input} {...props}
-                       className={(hasError && classes.error) + " " + "main__form-input"}
+                       className={(hasError && classes.error) + " " + "all__input"}
                        placeholder={hasError && meta.error || props.placeholder}
                 />
             </div>

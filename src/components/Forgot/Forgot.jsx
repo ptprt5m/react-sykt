@@ -1,6 +1,6 @@
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../Utils/FormControls";
-import {required} from "../Utils/validators";
+import {Input} from "../../Utils/FormControls";
+import {required} from "../../Utils/validators";
 import React from "react";
 
 const ForgotForm = (props) => {

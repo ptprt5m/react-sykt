@@ -1,4 +1,6 @@
-import {weatherAPI} from "../api/apiWeather";
+import {weatherAPI, weatherResultCode} from '../api/apiWeather'
+import {ThunkAction} from 'redux-thunk'
+import {AppStateType} from './redux'
 
 const SET_TEMP = 'weatherReducer/SET_TEMP'
 const SET_WEATHER_DATA = 'weatherReducer/SET_WEATHER_DATA'
@@ -42,7 +44,7 @@ let initialState: initialStateType = {
     isFetching: false
 }
 
-const weatherReducer = (state = initialState, action: any): initialStateType => {
+const weatherReducer = (state = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case SET_WEATHER_DATA: {
             return {
@@ -115,6 +117,9 @@ const weatherReducer = (state = initialState, action: any): initialStateType => 
     }
 }
 
+type ActionType = setWeatherDataType | setTempType | setFeelsLikeType | setPressureType | setHumidityType
+    | setWindSpeedType | setWindDegType | setWeatherListType | setWeatherIconType | setWeatherInfoType | toggleIsFetchingType
+
 type setWeatherDataType = {
     type: typeof SET_WEATHER_DATA
     data: object
@@ -172,12 +177,12 @@ export const setWeatherIcon = (weatherIcon: string): setWeatherIconType => ({typ
 export const setWeatherInfo = (info: string): setWeatherInfoType => ({type: SET_WEATHER_INFO, info})
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching})
 
-export const getWeatherDataTC = () => {
-    return async (dispatch: any) => {
+export const getWeatherDataTC = (): ThunkAction<Promise<void>, AppStateType, unknown, ActionType> => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         let response = await weatherAPI.getCurrentWeather('Syktyvkar')
 
-        if (response.cod === 200) {
+        if (response.cod === weatherResultCode.SuccessCurrent) {
             dispatch(setWeatherData(response))
 
             dispatch(setTemp(Math.round(response.main.temp)))
@@ -193,12 +198,12 @@ export const getWeatherDataTC = () => {
     }
 }
 
-export const getHourlyWeatherDataTC = () => {
-    return async (dispatch: any) => {
+export const getHourlyWeatherDataTC = (): ThunkAction<Promise<void>, AppStateType, unknown, ActionType> => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         let response = await weatherAPI.getHourlyWeather('Syktyvkar')
 
-        if (response.cod === '200') {
+        if (response.cod === weatherResultCode.SuccessHourly) {
             dispatch(setWeatherList(response.list))
             dispatch(toggleIsFetching(false))
         }

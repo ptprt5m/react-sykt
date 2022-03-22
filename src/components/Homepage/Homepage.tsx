@@ -1,5 +1,5 @@
 import React from 'react'
-import HomepageLinks from "./commons/HomepageLinks";
+import HomepageLinks from '../commons/HomepageLinks'
 
 const Homepage = () => {
     return (

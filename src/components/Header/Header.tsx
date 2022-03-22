@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/burger.scss'
 import {NavLink} from 'react-router-dom'
 
 type Props = {
@@ -7,7 +8,6 @@ type Props = {
 }
 
 const Header: React.FC<Props> = ({isAuth, userLogout}) => {
-    debugger
     return (
         <header className="header">
             <div className="header__section-left">
@@ -40,6 +40,13 @@ const Header: React.FC<Props> = ({isAuth, userLogout}) => {
                         }
                     </ul>
                 </nav>
+                <div className="header__burger">
+                    <div className="header__burger-items burger">
+                        <span className="burger__line"></span>
+                        <span className="burger__line"></span>
+                        <span className="burger__line"></span>
+                    </div>
+                </div>
             </div>
         </header>
     )

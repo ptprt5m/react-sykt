@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react'
 import './App.css'
 import './styles/style.scss'
+import './styles/screen.scss'
 import './styles/header__nav.scss'
-import Footer from './components/Footer'
-import Homepage from './components/Homepage'
+import Footer from './components/Footer/Footer'
+import Homepage from './components/Homepage/Homepage'
 import {Route, Routes} from 'react-router-dom'
 import About from './components/About'
 import Attractions from './components/Attractions'
 import Login from './components/Login'
-import Forgot from './components/Forgot'
+import Forgot from './components/Forgot/Forgot'
 import SignUp from './components/SignUp'
 import Establishments from './components/Establishments/Establishments'
 import {compose} from 'redux'
@@ -21,8 +22,8 @@ import Preloader from './components/commons/Preloader'
 import InitializingPage from './components/commons/InitializingPage'
 import {AppStateType} from "./redux/redux";
 
-const Stars = React.lazy(() => import('./components/Stars'))
-const Map = React.lazy(() => import('./components/Map'))
+const Stars = React.lazy(() => import('./components/Stars/Stars'))
+const Map = React.lazy(() => import('./components/Map/Map'))
 const Weather = React.lazy(() => import('./components/Weather/Weather'))
 
 type MapStatePropsType = {

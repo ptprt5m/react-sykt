@@ -1,6 +1,7 @@
-import {cafesAPI} from "../api/apiPlaces";
-import {twoGisAPI} from "../api/api2GIS";
-import {authAPI} from "../api/apiLogin";
+import {cafesAPI} from '../api/apiPlaces'
+import {twoGisAPI, twoGisResultCode} from '../api/api2GIS'
+import {ThunkAction} from 'redux-thunk'
+import {AppStateType} from './redux'
 
 const SET_PLACES = 'weatherReducer/SET_PLACES'
 const SET_INFO_PLACE = 'weatherReducer/SET_INFO_PLACE'
@@ -64,7 +65,7 @@ let initialState: initialStateType = {
     totalPlacesCount: 0
 }
 
-const placesReducer = (state = initialState, action: any): initialStateType => {
+const placesReducer = (state = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case SET_PLACES:
             return {
@@ -112,6 +113,9 @@ const placesReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 
+type ActionType = setPlacesType | setInfoPlaceType | setInfoPlaceIdType | setPageSizeType
+    | setTotalPlacesCountType | toggleIsFetchingType | toggleIsMiniFetchingType
+
 type setPlacesType = {
     type: typeof SET_PLACES
     places: Array<PlaceType> | null
@@ -155,7 +159,7 @@ export const toggleIsMiniFetching = (isMiniFetching: boolean): toggleIsMiniFetch
     isMiniFetching
 })
 
-export const getPlacesDataTC = (pageSize: number) => async (dispatch: any) => {
+export const getPlacesDataTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
 
@@ -166,7 +170,7 @@ export const getPlacesDataTC = (pageSize: number) => async (dispatch: any) => {
     }
 }
 
-export const setNewPlacesTC = (pageSize: number) => async (dispatch: any) => {
+export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsMiniFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
 
@@ -175,17 +179,15 @@ export const setNewPlacesTC = (pageSize: number) => async (dispatch: any) => {
         dispatch(setPlaces(response.features))
         dispatch(toggleIsMiniFetching(false))
     }
-
 }
 
-export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: string) => async (dispatch: any) => {
+export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     let response = await twoGisAPI.getInfoAboutTarget(lat, lon)
 
-    if (response.meta.code === 200) {
+    if (response.meta.code === twoGisResultCode.Success) {
         dispatch(setInfoPlaceId(placeInfoId))
         dispatch(setInfoPlace(response.result.items))
     }
 }
-
 
 export default placesReducer

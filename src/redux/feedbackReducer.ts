@@ -1,6 +1,6 @@
-import {apiFeedback} from "../api/apiFeedback";
+import {apiFeedback} from "../api/apiFeedback"
 
-const SET_FEEDBACK = 'app/SET-INITIALIZED';
+const SET_FEEDBACK = 'app/SET-INITIALIZED'
 
 type InitialStateType = {
     initialized: boolean
@@ -9,7 +9,7 @@ let initialState: InitialStateType = {
     initialized: false
 }
 
-const feedbackReducer = (state = initialState, action: any): InitialStateType => {
+const feedbackReducer = (state = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case SET_FEEDBACK: {
             return {
@@ -21,6 +21,8 @@ const feedbackReducer = (state = initialState, action: any): InitialStateType =>
             return state;
     }
 }
+
+type ActionType = SetFeedbackActionType
 
 type SetFeedbackActionType = {
     type: typeof SET_FEEDBACK
@@ -36,6 +38,6 @@ export const setFeedback = (): SetFeedbackActionType => ({type: SET_FEEDBACK})
 //     }
 // }
 
-export default feedbackReducer;
+export default feedbackReducer
 
 
