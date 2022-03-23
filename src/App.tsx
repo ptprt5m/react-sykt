@@ -19,8 +19,7 @@ import HeaderContainer from './components/Header/HeaderContainer'
 import Feedback from './components/Feedback'
 import Profile from './components/Profile'
 import Preloader from './components/commons/Preloader'
-import InitializingPage from './components/commons/InitializingPage'
-import {AppStateType} from "./redux/redux";
+import {AppStateType} from './redux/redux'
 
 const Stars = React.lazy(() => import('./components/Stars/Stars'))
 const Map = React.lazy(() => import('./components/Map/Map'))
@@ -43,9 +42,9 @@ const App: React.FC<Props> = (props) => {
     }, []);
 
 
-    if (!props.initialized) {
-        return <InitializingPage />
-    }
+    // if (!props.initialized) {
+    //     return <InitializingPage />
+    // }
 
     return (
         <div className="App">

@@ -48,8 +48,10 @@ const WeatherNow: React.FC<Props> = ({
                 :
                 <div className="weather__wrapper-content">
                     <div className="weather__wrapper-block">
-                        <p className="weather__wrapper-block_temp">{tempColor(temp)}°C</p>
-                        <img className="weather__wrapper-icon" src={getWeatherIcon(weatherIcon)} alt="weatherIcon"/>
+                        <div className="weather__wrapper-block-left">
+                            <p className="weather__wrapper-block_temp">{tempColor(temp)}°C</p>
+                            <img className="weather__wrapper-icon" src={getWeatherIcon(weatherIcon)} alt="weatherIcon"/>
+                        </div>
                         <div className="weather__wrapper-block-right">
                             <p>{weatherInfo && capitalizeFirstLetter(weatherInfo)}</p>
                             <p>Ощущается как {tempColor(feelsLike)}°C</p>
