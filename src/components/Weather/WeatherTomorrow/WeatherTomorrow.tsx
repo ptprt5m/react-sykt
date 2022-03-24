@@ -17,7 +17,7 @@ type MapDispatchPropsType = {
 
 type OwnPropsType = {
     tempColor: (temp: number | null) => JSX.Element| null
-    getWeatherIcon: (iconNumber: string) => string
+    getWeatherIcon: (iconNumber: string | null) => string
     capitalizeFirstLetter: (weatherInfo: string) => string
 }
 

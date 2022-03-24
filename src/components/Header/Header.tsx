@@ -40,13 +40,23 @@ const Header: React.FC<Props> = ({isAuth, userLogout}) => {
                         }
                     </ul>
                 </nav>
-                <div className="header__burger">
-                    <div className="header__burger-items burger">
-                        <span className="burger__line"></span>
-                        <span className="burger__line"></span>
-                        <span className="burger__line"></span>
-                    </div>
-                </div>
+
+                <input id="menu-toggle" type="checkbox"/>
+                <label className='menu-button-container' htmlFor="menu-toggle">
+                    <div className='menu-button'></div>
+                </label>
+                <ul className="menu">
+                    <li><NavLink to="/">Главная</NavLink></li>
+                    <li><NavLink to="/feedback">Обратная связь</NavLink></li>
+                    {isAuth ?
+                        <li><NavLink to="/profile">Профиль</NavLink></li>
+                        : null
+                    }
+                    {isAuth ?
+                        <li><NavLink to="/" onClick={userLogout}>Выйти</NavLink></li>
+                        : <li><NavLink to="/login">Войти</NavLink></li>
+                    }
+                </ul>
             </div>
         </header>
     )
