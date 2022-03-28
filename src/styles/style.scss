@@ -34,6 +34,26 @@ body {
   @include flexColumn;
 }
 
+.modalImg {
+  @include wh(100vw, 100vh);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: black;
+
+  &-image {
+    margin: auto;
+    width: auto;
+    height: 100%;
+
+    @media screen and (max-width: 415px) {
+      width: 100vw;
+      height: auto;
+    }
+  }
+}
+
 //.error__message {
 //  font-size: 14px;
 //  padding-bottom: 20px;
@@ -130,7 +150,7 @@ body {
   @include flex;
   @include wh;
   @include bg($primary-dark);
-  z-index: 999;
+  z-index: 998;
   padding: 10px;
 
   &__section-left, &__section-right {
@@ -139,7 +159,9 @@ body {
     }
   }
   &__section-right {
-    padding-right: 25px;
+    @media screen and (max-width: 820px) {
+      padding-right: 25px;
+    }
     .active {
       color: $secondary;
     }

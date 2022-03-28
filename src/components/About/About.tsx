@@ -5,6 +5,7 @@ import mondi from '../../img/about/mondi.jpg'
 import sgu from '../../img/about/sgu.jpg'
 import drama from '../../img/about/drama.jpg'
 import LazyLoad from 'react-lazyload'
+import Img from '../commons/Img'
 
 const About = () => {
     return (
@@ -19,9 +20,7 @@ const About = () => {
                     означает – «город на Сысоле».
                 </p>
                 <div className="about__wrapper-block">
-                    <LazyLoad height={400}>
-                        <img className="about__wrapper-block_img" src={river} alt="river" />
-                    </LazyLoad>
+                    <Img path={river} nameClass={'about__wrapper-block_img'} />
                     <span className="about__wrapper-block_span">Река Сысола</span>
                 </div>
                 <p className="about__wrapper-text">
@@ -34,9 +33,7 @@ const About = () => {
                     площадь города составляет <span className="secondary">152</span> кв. км.
                 </p>
                 <div className="about__wrapper-block">
-                    <LazyLoad height={400}>
-                        <img className="about__wrapper-block_img" src={up} alt="up" />
-                    </LazyLoad>
+                    <Img path={up} nameClass={'about__wrapper-block_img'} />
                     <span className="about__wrapper-block_span">Город с высоты птичьего полета</span>
                 </div>
                 <p className="about__wrapper-text">
@@ -66,9 +63,7 @@ const About = () => {
                     производитель алкогольной продукции в республике.
                 </p>
                 <div className="about__wrapper-block">
-                    <LazyLoad height={400}>
-                        <img className="about__wrapper-block_img" src={mondi} alt="mondi" />
-                    </LazyLoad>
+                    <Img path={mondi} nameClass={'about__wrapper-block_img'} />
                     <span className="about__wrapper-block_span">ОАО «Монди Сыктывкарский ЛПК»</span>
                 </div>
                 <p className="about__wrapper-text">
@@ -90,9 +85,7 @@ const About = () => {
                     Сыктывкарский технологический колледж, Гимназия искусств при Главе Республики Коми.
                 </p>
                 <div className="about__wrapper-block">
-                    <LazyLoad height={400}>
-                        <img className="about__wrapper-block_img" src={sgu} alt="sgu" />
-                    </LazyLoad>
+                    <Img path={sgu} nameClass={'about__wrapper-block_img'} />
                     <span className="about__wrapper-block_span">Сыктывкарский Государственный Университет им. Питирима Сорокина</span>
                 </div>
                 <p className="about__wrapper-text">
@@ -110,9 +103,7 @@ const About = () => {
                     Республики Коми, одной из старейших на Северо-Западе России.
                 </p>
                 <div className="about__wrapper-block">
-                    <LazyLoad height={400}>
-                        <img className="about__wrapper-block_img" src={drama} alt="drama" />
-                    </LazyLoad>
+                    <Img path={drama} nameClass={'about__wrapper-block_img'} />
                     <span className="about__wrapper-block_span">Республиканский театр оперы и балета Республики Коми</span>
                 </div>
                 <p className="about__wrapper-text">

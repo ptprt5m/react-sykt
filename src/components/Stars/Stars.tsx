@@ -1,6 +1,6 @@
 import React from 'react'
-import LazyLoad from 'react-lazyload'
 import StarsData from '../../data/stars-data'
+import Img from '../commons/Img'
 
 const Stars = () => {
 
@@ -11,9 +11,7 @@ const Stars = () => {
                 {StarsData.map(star => {
                     return (
                         <div className="main__wrapper-item">
-                            <LazyLoad height={400}>
-                                <img className="main__wrapper-item-photo" src={star.img}/>
-                            </LazyLoad>
+                            <Img path={star.img} nameClass={'main__wrapper-item-photo'} />
                             <h3>{star.title}</h3>
                             <p>{star.desc}</p>
                             <span>{star.fact}</span>

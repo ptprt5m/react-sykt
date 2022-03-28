@@ -7,8 +7,8 @@ import {
     setPageSize
 } from '../../redux/placesReducer'
 import Preloader from '../commons/Preloader'
-import img0 from '../../img/rest/0.png'
-import {AppStateType} from "../../redux/redux";
+import {AppStateType} from '../../redux/redux'
+import Establishment from './Establishment'
 
 type MapStatePropsType = {
     places: Array<PlaceType> | null
@@ -56,28 +56,15 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
                 <div className="main__wrapper-items">
                     {places ? places.map(p => (
                         p.properties.name != '' ?
-                            (<div className="main__wrapper-item" key={p.id}>
-                                <div className="main__wrapper-item-block">
-                                    <img className="main__wrapper-item-ava" src={img0} alt="restaurantPhoto"/>
-                                    <div className="main__wrapper-item-block_right">
-                                        <h4>{p.properties.name}</h4>
-                                        <a target="_blank" href={'https://www.openstreetmap.org/' + p.properties.osm}>Точка
-                                            на openstreetmap</a>
-                                        <button className="all__button" onClick={() => {
-                                            getInfo2GIS(p.geometry.coordinates[1], p.geometry.coordinates[0], p.id)
-                                        }}>Получить больше данных
-                                        </button>
-
-                                        {placeInfo && placeInfoId === p.id ?
-                                            <div>
-                                                <p>Адрес: {placeInfo[0].address_name || 'Нет информации'}</p>
-                                                <p>Тип строения: {placeInfo[0].purpose_name || 'Нет информации'}</p>
-                                                <a target="_blank" href={to2GIS(p.geometry.coordinates[0], p.geometry.coordinates[1])}>Перейти в 2GIS</a>
-                                            </div> : null}
-                                        <p>Координаты: {p.geometry.coordinates[0] + ' ' + p.geometry.coordinates[1]}</p>
-                                    </div>
-                                </div>
-                            </div>) : null
+                            (<Establishment key={p.id}
+                                            name={p.properties.name}
+                                            osm={p.properties.osm}
+                                            coord={p.geometry.coordinates}
+                                            getInfo2GIS={getInfo2GIS}
+                                            to2GIS={to2GIS}
+                                            placeInfo={placeInfo}
+                                            placeInfoId={placeInfoId}
+                            />) : null
                     )) : null}
                 </div>
             }

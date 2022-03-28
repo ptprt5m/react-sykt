@@ -1,6 +1,7 @@
 import {weatherAPI, weatherResultCode} from '../api/apiWeather'
 import {ThunkAction} from 'redux-thunk'
 import {AppStateType} from './redux'
+import {getTodayDate, getTomorrowDate} from "../data/weather-data";
 
 const SET_TEMP = 'weatherReducer/SET_TEMP'
 const SET_WEATHER_DATA = 'weatherReducer/SET_WEATHER_DATA'
@@ -14,6 +15,31 @@ const SET_WEATHER_ICON = 'weatherReducer/SET_WEATHER_ICON'
 const SET_WEATHER_INFO = 'weatherReducer/SET_WEATHER_INFO'
 const TOGGLE_IS_FETCHING = 'weatherReducer/TOGGLE_IS_FETCHING'
 
+type WeatherItem = {
+    clouds: { all: number }
+    dt: number
+    dt_txt: string
+    main: {
+        feels_like: number
+        grnd_level: number
+        humidity: number
+        pressure: number
+        sea_level: number
+        temp: number
+        temp_kf: number
+        temp_max: number
+        temp_min: number
+    }
+    pop: number
+    sys: { pod: string }
+    visibility: number
+    weather: {
+        0: { id: number, main: string, description: string, icon: string }
+        length: number
+    }
+    wind: { speed: number, deg: number, gust: number }
+}
+
 type initialStateType = {
     weatherData: object | null
 
@@ -23,7 +49,7 @@ type initialStateType = {
     humidity: number | null
     windSpeed: number | null
     windDeg: number | null
-    weatherList: Array<any> | null
+    weatherList: Array<WeatherItem> | null
     weatherIcon: string | null
     weatherInfo: string | null
     isFetching: boolean
@@ -117,8 +143,18 @@ const weatherReducer = (state = initialState, action: ActionType): initialStateT
     }
 }
 
-type ActionType = setWeatherDataType | setTempType | setFeelsLikeType | setPressureType | setHumidityType
-    | setWindSpeedType | setWindDegType | setWeatherListType | setWeatherIconType | setWeatherInfoType | toggleIsFetchingType
+type ActionType =
+    setWeatherDataType
+    | setTempType
+    | setFeelsLikeType
+    | setPressureType
+    | setHumidityType
+    | setWindSpeedType
+    | setWindDegType
+    | setWeatherListType
+    | setWeatherIconType
+    | setWeatherInfoType
+    | toggleIsFetchingType
 
 type setWeatherDataType = {
     type: typeof SET_WEATHER_DATA
@@ -152,7 +188,7 @@ type setWindDegType = {
 }
 type setWeatherListType = {
     type: typeof SET_WEATHER_LIST
-    weatherList: Array<any>
+    weatherList: Array<WeatherItem>
 }
 type setWeatherIconType = {
     type: typeof SET_WEATHER_ICON
@@ -172,7 +208,7 @@ export const setPressure = (pressure: number): setPressureType => ({type: SET_PR
 export const setHumidity = (humidity: number): setHumidityType => ({type: SET_HUMIDITY, humidity})
 export const setWindSpeed = (windSpeed: number): setWindSpeedType => ({type: SET_WIND_SPEED, windSpeed})
 export const setWindDeg = (windDeg: number): setWindDegType => ({type: SET_WIND_DEG, windDeg})
-export const setWeatherList = (weatherList: Array<any>): setWeatherListType => ({type: SET_WEATHER_LIST, weatherList})
+export const setWeatherList = (weatherList: Array<WeatherItem>): setWeatherListType => ({type: SET_WEATHER_LIST, weatherList})
 export const setWeatherIcon = (weatherIcon: string): setWeatherIconType => ({type: SET_WEATHER_ICON, weatherIcon})
 export const setWeatherInfo = (info: string): setWeatherInfoType => ({type: SET_WEATHER_INFO, info})
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching})
@@ -204,7 +240,18 @@ export const getHourlyWeatherDataTC = (): ThunkAction<Promise<void>, AppStateTyp
         let response = await weatherAPI.getHourlyWeather('Syktyvkar')
 
         if (response.cod === weatherResultCode.SuccessHourly) {
-            dispatch(setWeatherList(response.list))
+
+
+            let filteredWeatherList = [] as Array<WeatherItem>
+            response.list.map(weatherDay => {
+                //Отсеивает погоду только на сегодня и завтра
+                if ((weatherDay.dt_txt.slice(0, 10) === getTodayDate()) || (weatherDay.dt_txt.slice(0, 10) === getTomorrowDate())) {
+                    filteredWeatherList.push(weatherDay)
+                }
+            })
+            dispatch(setWeatherList(filteredWeatherList))
+
+            //dispatch(setWeatherList(response.list))
             dispatch(toggleIsFetching(false))
         }
     }

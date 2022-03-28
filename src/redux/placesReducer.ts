@@ -183,7 +183,7 @@ export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType
 
 export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     let response = await twoGisAPI.getInfoAboutTarget(lat, lon)
-
+    //Заблокирован API KEY 2GIS, который был выдан на 3 месяца для образовательных целей
     if (response.meta.code === twoGisResultCode.Success) {
         dispatch(setInfoPlaceId(placeInfoId))
         dispatch(setInfoPlace(response.result.items))

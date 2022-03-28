@@ -1,6 +1,6 @@
 import React from 'react'
-import LazyLoad from 'react-lazyload'
 import AttractionsData from '../../data/attractions-data'
+import Img from '../commons/Img'
 
 const Attractions = () => {
     return (
@@ -10,9 +10,7 @@ const Attractions = () => {
                 {AttractionsData.map(att => {
                     return (
                         <div className="main__wrapper-item">
-                            <LazyLoad height={400}>
-                                <img className="main__wrapper-item-photo" src={att.img}/>
-                            </LazyLoad>
+                            <Img path={att.img} nameClass={'main__wrapper-item-photo'} />
                             <h3>{att.title}</h3>
                             <p>{att.desc}</p>
                             <span>{att.address}</span>

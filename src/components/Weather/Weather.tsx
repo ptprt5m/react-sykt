@@ -8,7 +8,7 @@ import WeatherFiveDays from './WeatherFiveDays'
 const Weather = () => {
 
     const redirect = () => {
-        return <Navigate to="now" />;
+        return <Navigate to='now' />;
     };
 
     useEffect(() => {
