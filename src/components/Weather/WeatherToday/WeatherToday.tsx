@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react'
-import {connect} from "react-redux";
-import {getHourlyWeatherDataTC} from "../../../redux/weatherReducer";
-import Preloader from "../../commons/Preloader";
-import {getTodayDate} from "../../../data/weather-data";
-import WeatherSlick from "../WeatherSlick/WeatherSlick";
-import {AppStateType} from "../../../redux/redux";
+import {connect} from 'react-redux'
+import {getHourlyWeatherDataTC} from '../../../redux/weatherReducer'
+import Preloader from '../../commons/Preloader'
+import WeatherSlick from '../WeatherSlick/WeatherSlick'
+import {AppStateType} from '../../../redux/redux'
 
 type MapStatePropsType = {
     weatherList: any
@@ -12,7 +11,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    getHourlyWeatherDataTC: () => void
+    getHourlyWeatherDataTC: (dataFunc: string) => void
 }
 
 type OwnPropsType = {
@@ -29,7 +28,7 @@ const WeatherToday: React.FC<Props> = ({
                       }) => {
 
     useEffect(() => {
-        getHourlyWeatherDataTC()
+        getHourlyWeatherDataTC('today')
     }, [])
 
     if (isFetching) {
@@ -41,7 +40,7 @@ const WeatherToday: React.FC<Props> = ({
             <WeatherSlick getWeatherIcon={getWeatherIcon}
                           capitalizeFirstLetter={capitalizeFirstLetter}
                           tempColor={tempColor} weatherList={weatherList}
-                          day={getTodayDate}
+                          format={'h'}
             />
         </div>
     )

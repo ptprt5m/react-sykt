@@ -3,28 +3,32 @@ import {connect} from 'react-redux'
 import {getHourlyWeatherDataTC} from '../../../redux/weatherReducer'
 import Preloader from '../../commons/Preloader'
 import {AppStateType} from '../../../redux/redux'
+import WeatherSlick from '../WeatherSlick/WeatherSlick'
 
 type MapStatePropsType = {
-    weatherList: Array<any> | null
+    weatherList: any
     isFetching: boolean
 }
 
 type MapDispatchPropsType = {
-    getHourlyWeatherDataTC: () => void
+    getHourlyWeatherDataTC: (dataFunc: string) => void
 }
 
 type OwnPropsType = {
-    tempColor: (temp: number) => void
-    getWeatherIcon: (iconNumber: string) => string
+    tempColor: (temp: number | null) => JSX.Element | null
+    getWeatherIcon: (iconNumber: string | null) => string
     capitalizeFirstLetter: (weatherInfo: string) => string
 }
 
 type Props = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
-const WeatherFiveDays: React.FC<Props> = ({isFetching, getHourlyWeatherDataTC}) => {
+const WeatherFiveDays: React.FC<Props> = ({
+                                              weatherList, isFetching, getHourlyWeatherDataTC,
+                                              getWeatherIcon, capitalizeFirstLetter, tempColor
+                                          }) => {
 
     useEffect(() => {
-        getHourlyWeatherDataTC()
+        getHourlyWeatherDataTC('fiveDays')
     }, [])
 
     if (isFetching) {
@@ -32,18 +36,12 @@ const WeatherFiveDays: React.FC<Props> = ({isFetching, getHourlyWeatherDataTC}) 
     }
 
     return (
-        <div className="weather__wrapper-content">
-            Погода на 5 дней
-            <span className='secondary'
-                  style={{fontSize: '1.5em', margin: '10px 0'}}>
-                Извините, функция находится в разработке</span>
-
-            {/*<WeatherSlick getWeatherIcon={getWeatherIcon}*/}
-            {/*              capitalizeFirstLetter={capitalizeFirstLetter}*/}
-            {/*              tempColor={tempColor} weatherList={weatherList}*/}
-            {/*              day={getFiveDays}*/}
-            {/*/>*/}
-
+        <div>
+            <WeatherSlick getWeatherIcon={getWeatherIcon}
+                          capitalizeFirstLetter={capitalizeFirstLetter}
+                          tempColor={tempColor} weatherList={weatherList}
+                          format={'d'} count={2}
+            />
         </div>
     )
 }

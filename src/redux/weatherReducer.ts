@@ -1,7 +1,7 @@
 import {weatherAPI, weatherResultCode} from '../api/apiWeather'
 import {ThunkAction} from 'redux-thunk'
 import {AppStateType} from './redux'
-import {getTodayDate, getTomorrowDate} from "../data/weather-data";
+import {getFiveDays, getTodayDate, getTomorrowDate} from '../data/weather-data'
 
 const SET_TEMP = 'weatherReducer/SET_TEMP'
 const SET_WEATHER_DATA = 'weatherReducer/SET_WEATHER_DATA'
@@ -208,7 +208,10 @@ export const setPressure = (pressure: number): setPressureType => ({type: SET_PR
 export const setHumidity = (humidity: number): setHumidityType => ({type: SET_HUMIDITY, humidity})
 export const setWindSpeed = (windSpeed: number): setWindSpeedType => ({type: SET_WIND_SPEED, windSpeed})
 export const setWindDeg = (windDeg: number): setWindDegType => ({type: SET_WIND_DEG, windDeg})
-export const setWeatherList = (weatherList: Array<WeatherItem>): setWeatherListType => ({type: SET_WEATHER_LIST, weatherList})
+export const setWeatherList = (weatherList: Array<WeatherItem>): setWeatherListType => ({
+    type: SET_WEATHER_LIST,
+    weatherList
+})
 export const setWeatherIcon = (weatherIcon: string): setWeatherIconType => ({type: SET_WEATHER_ICON, weatherIcon})
 export const setWeatherInfo = (info: string): setWeatherInfoType => ({type: SET_WEATHER_INFO, info})
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching})
@@ -234,24 +237,43 @@ export const getWeatherDataTC = (): ThunkAction<Promise<void>, AppStateType, unk
     }
 }
 
-export const getHourlyWeatherDataTC = (): ThunkAction<Promise<void>, AppStateType, unknown, ActionType> => {
+export const getHourlyWeatherDataTC = (dataFunc: string): ThunkAction<Promise<void>, AppStateType, unknown, ActionType> => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         let response = await weatherAPI.getHourlyWeather('Syktyvkar')
 
         if (response.cod === weatherResultCode.SuccessHourly) {
-
-
             let filteredWeatherList = [] as Array<WeatherItem>
-            response.list.map(weatherDay => {
-                //Отсеивает погоду только на сегодня и завтра
-                if ((weatherDay.dt_txt.slice(0, 10) === getTodayDate()) || (weatherDay.dt_txt.slice(0, 10) === getTomorrowDate())) {
-                    filteredWeatherList.push(weatherDay)
-                }
-            })
-            dispatch(setWeatherList(filteredWeatherList))
 
-            //dispatch(setWeatherList(response.list))
+            switch (dataFunc) {
+                case 'today':
+                    response.list.map(weatherDay => {
+                        if (weatherDay.dt_txt.slice(0, 10) === getTodayDate()) {
+                            filteredWeatherList.push(weatherDay)
+                        }
+                    })
+                    break
+                case 'tomorrow':
+                    response.list.map(weatherDay => {
+                        if (weatherDay.dt_txt.slice(0, 10) === getTomorrowDate()) {
+                            filteredWeatherList.push(weatherDay)
+                        }
+                    })
+                    break
+                case 'fiveDays':
+                    response.list.map(weatherDay => {
+                        for(let i = 0; i < 5; i++) {
+                            if (weatherDay.dt_txt === (getFiveDays()[i]) + ' ' + '00:00:00') {
+                                filteredWeatherList.push(weatherDay)
+                            } else if (weatherDay.dt_txt === (getFiveDays()[i]) + ' ' + '15:00:00') {
+                                filteredWeatherList.push(weatherDay)
+                            }
+                        }
+                    })
+                    break
+            }
+
+            dispatch(setWeatherList(filteredWeatherList))
             dispatch(toggleIsFetching(false))
         }
     }

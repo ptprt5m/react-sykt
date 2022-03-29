@@ -53,7 +53,13 @@ export function getTomorrowDate() {
 }
 
 export function getFiveDays() {
-
+    const date = new Date();
+    const dates = [];
+    for (let i = 0; i < 5; i++) {
+        dates.push(date.toLocaleDateString('en-CA'));
+        date.setDate(date.getDate() + 1);
+    }
+    return dates
 }
 
 export default WeatherData

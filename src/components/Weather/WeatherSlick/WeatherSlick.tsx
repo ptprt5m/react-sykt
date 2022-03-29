@@ -7,7 +7,8 @@ type Props = {
     getWeatherIcon: (iconNumber: string | null) => string
     capitalizeFirstLetter: (string: string) => string
     tempColor: (temp: number | null) => JSX.Element | null
-    day: () => string
+    format: string
+    count?: number | undefined
 }
 
 type responsiveType = {
@@ -27,13 +28,14 @@ type settingsType = {
     responsive: Array<responsiveType>
 }
 
-const WeatherSlick: React.FC<Props> = ({weatherList, getWeatherIcon, capitalizeFirstLetter, tempColor, day}) => {
+const WeatherSlick: React.FC<Props> = ({weatherList, getWeatherIcon,
+                                           capitalizeFirstLetter, tempColor, format, count }) => {
     const settings: settingsType = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: count ? count : ((weatherList.length > 3) ? 3 : weatherList.length),
+        slidesToScroll: count ? count : ((weatherList.length > 3) ? 3 : weatherList.length),
         responsive: [
             {
                 breakpoint: 1024,
@@ -51,31 +53,30 @@ const WeatherSlick: React.FC<Props> = ({weatherList, getWeatherIcon, capitalizeF
             }
         ]
     }
-
     return (
         <div>
             <Slider {...settings}>
                 {weatherList.map(weatherDay => {
-                    if (weatherDay.dt_txt.slice(0, 10) === day()) {
-                        return (
-                            <div className="main__wrapper-weather-block">
-                                <div>
-                                    <h3>{weatherDay.dt_txt.slice(11, 16)}</h3>
-                                    <img src={getWeatherIcon(weatherDay.weather[0].icon)} alt="weatherIcon"/>
-                                    <p className="main__wrapper-weather-block-right_info">{capitalizeFirstLetter(weatherDay.weather[0].description)}</p>
-                                </div>
-                                <div className="main__wrapper-weather-block-right">
-                                    <p className="main__wrapper-weather-block-right_temp">{tempColor(Math.round(weatherDay.main.temp))}°C</p>
-                                    <p className="main__wrapper-weather-block-right_wind">
-                                        <img className="main__wrapper-weather-block-right_miniIcon"
-                                             src={windIcon} alt="wind_icon"/>
-                                        <span className="secondary"
-                                              style={{marginRight: '5px'}}>{weatherDay.wind.speed}</span> м/с
-                                    </p>
-                                </div>
+                    return (
+                        <div className="main__wrapper-weather-block">
+                            <div>
+                                <h3>
+                                    {(format === 'h') ? weatherDay.dt_txt.slice(11, 16) : weatherDay.dt_txt.slice(5, 10) + ' ' + weatherDay.dt_txt.slice(11, 16)}
+                                </h3>
+                                <img src={getWeatherIcon(weatherDay.weather[0].icon)} alt="weatherIcon"/>
+                                <p className="main__wrapper-weather-block-right_info">{capitalizeFirstLetter(weatherDay.weather[0].description)}</p>
                             </div>
-                        )
-                    }
+                            <div className="main__wrapper-weather-block-right">
+                                <p className="main__wrapper-weather-block-right_temp">{tempColor(Math.round(weatherDay.main.temp))}°C</p>
+                                <p className="main__wrapper-weather-block-right_wind">
+                                    <img className="main__wrapper-weather-block-right_miniIcon"
+                                         src={windIcon} alt="wind_icon"/>
+                                    <span className="secondary"
+                                          style={{marginRight: '5px'}}>{weatherDay.wind.speed}</span> м/с
+                                </p>
+                            </div>
+                        </div>
+                    )
                 })}
             </Slider>
         </div>

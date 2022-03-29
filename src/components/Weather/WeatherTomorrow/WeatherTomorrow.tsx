@@ -12,7 +12,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    getHourlyWeatherDataTC: () => void
+    getHourlyWeatherDataTC: (dataFunc: string) => void
 }
 
 type OwnPropsType = {
@@ -29,7 +29,7 @@ const WeatherTomorrow: React.FC<Props> = ({
                          }) => {
 
     useEffect(() => {
-        getHourlyWeatherDataTC()
+        getHourlyWeatherDataTC('tomorrow')
     }, [])
 
     if (isFetching) {
@@ -41,7 +41,7 @@ const WeatherTomorrow: React.FC<Props> = ({
             <WeatherSlick getWeatherIcon={getWeatherIcon}
                           capitalizeFirstLetter={capitalizeFirstLetter}
                           tempColor={tempColor} weatherList={weatherList}
-                          day={getTomorrowDate}
+                          format={'h'} count={3}
             />
         </div>
     )
