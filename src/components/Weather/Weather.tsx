@@ -17,12 +17,12 @@ const Weather = () => {
 
     let tempColor = (temp: number | null) => {
         if (temp === null) return null
-        if (temp > 20) {
+        if (temp > 25) {
             return <span className={'red'}>{temp}</span>
-        } else if (temp < 0) {
+        } else if (temp < 1) {
             return <span className={'blue'}>{temp}</span>
         } else {
-            return <span className={'secondary'}>{temp}</span>
+            return <span className={'primaryDark'}>{temp}</span>
         }
         return null
     }

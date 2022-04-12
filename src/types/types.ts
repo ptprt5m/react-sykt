@@ -176,3 +176,7 @@ export type weatherGetHourlyWeatherType = {
         sunset: number
     }
 }
+
+export type NewsDataType = {
+
+}

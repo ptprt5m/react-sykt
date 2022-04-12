@@ -96,6 +96,10 @@ body {
   color: $secondary;
 }
 
+.primaryDark {
+  color: $primary-dark;
+}
+
 .all__button {
   @include links(.2s all, $primary-text);
   padding: 0 15px;
@@ -634,6 +638,47 @@ iframe {
 
 //Yandex map styles end
 
+//News styles start
+
+.news {
+  &__wrapper {
+    @include flexColumn;
+    @include wh(70vw);
+    text-align: left;
+    margin: auto;
+    max-width: 800px;
+    padding-top: 2vh;
+    transition: .3s all;
+
+    &-time {
+      @include att(blue, 1.4em, 4vh);
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+    }
+
+    &-keys {
+      @include att($secondary, 1em, 2vh);
+      @include links(.3s all, $secondary-light);
+    }
+
+    &-newsBlock {
+      align-items: flex-start;
+      &_title {
+        @include att($secondary-text, 1em, 5px);
+      }
+      &_text {
+        @include att($primary, 1em, 5px);
+      }
+
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+//News styles end
+
 //Top link styles start
 
 #top-link {
@@ -717,7 +762,7 @@ iframe {
     justify-content: center;
     padding: 30px 40px;
     background: $light-bg;
-    border: 3px dashed $primary-dark;
+    //border: 3px dashed $primary-dark;
     border-radius: 15px;
     min-width: 200px;
     max-width: 250px;
@@ -725,7 +770,7 @@ iframe {
     transition: .2s all;
     &:hover, &:active, &:focus {
       background: $main-bg;
-      border: 3px solid $secondary-text;
+      //border: 3px solid $secondary-text;
       img {
         background: $primary-text;
       }

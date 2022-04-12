@@ -27,6 +27,7 @@ const Header: React.FC<Props> = ({isAuth, userLogout}) => {
                                 <li><NavLink to="/establishments">Вкусно поесть</NavLink></li>
                                 <li><NavLink to="/map">Карта</NavLink></li>
                                 <li><NavLink to="/weather/now">Погода</NavLink></li>
+                                <li><NavLink to="/news">Новости</NavLink></li>
                                 <li><NavLink to="/about">О городе</NavLink></li>
                             </ul>
                         </li>

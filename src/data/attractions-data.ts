@@ -1,8 +1,8 @@
-import IMG_pitirimSorokin from "../img/pitirimSorokin.jpg"
-import IMG_stella from "../img/stella.jpg"
-import IMG_rubles from "../img/rubles.jpg"
-import IMG_letterO from "../img/letterO.jpg"
-import IMG_electrician from "../img/electrician.jpg"
+import IMG_pitirimSorokin from '../img/pitirimSorokin.jpg'
+import IMG_stella from '../img/stella.jpg'
+import IMG_rubles from '../img/rubles.jpg'
+import IMG_letterO from '../img/letterO.jpg'
+import IMG_electrician from '../img/electrician.jpg'
 
 const AttractionsData = [
     {

@@ -6,6 +6,7 @@ import celebrity from '../../img/homepageLinks/celebrity.png'
 import establishments from '../../img/homepageLinks/delicious.png'
 import map from '../../img/homepageLinks/navigation.png'
 import weather from '../../img/homepageLinks/rain.png'
+import news from '../../img/homepageLinks/news.png'
 
 const HomepageLinks = () => {
     return (
@@ -44,6 +45,12 @@ const HomepageLinks = () => {
                 <div className='homepageLinks__wrapper-item'>
                     <img className='homepageLinks__wrapper-item_icon' src={weather} alt="weather"/>
                     <p className='homepageLinks__wrapper-item_title'>Погода</p>
+                </div>
+            </Link>
+            <Link to={"/news"}>
+                <div className='homepageLinks__wrapper-item'>
+                    <img className='homepageLinks__wrapper-item_icon' src={news} alt="news"/>
+                    <p className='homepageLinks__wrapper-item_title'>Новости</p>
                 </div>
             </Link>
         </div>

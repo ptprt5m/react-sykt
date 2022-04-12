@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react'
 import up from '../img/up.png'
 
 export default class ScrollToTop extends Component {
@@ -48,3 +48,5 @@ export default class ScrollToTop extends Component {
         );
     }
 }
+
+

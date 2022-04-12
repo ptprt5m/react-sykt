@@ -1,7 +1,7 @@
-import IMG_roman from "../img/roman.jpg"
-import IMG_rektor from "../img/rektor.JPG"
-import IMG_raisa from "../img/raisa.jpg"
-import IMG_15 from "../img/15.jpg"
+import IMG_roman from '../img/roman.jpg'
+import IMG_rektor from '../img/rektor.jpg'
+import IMG_raisa from '../img/raisa.jpg'
+import IMG_15 from '../img/15.jpg'
 
 const StarsData = [
     {

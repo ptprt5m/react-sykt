@@ -61,7 +61,8 @@ const WeatherSlick: React.FC<Props> = ({weatherList, getWeatherIcon,
                         <div className="main__wrapper-weather-block">
                             <div>
                                 <h3>
-                                    {(format === 'h') ? weatherDay.dt_txt.slice(11, 16) : weatherDay.dt_txt.slice(5, 10) + ' ' + weatherDay.dt_txt.slice(11, 16)}
+                                    {(format === 'h') ? weatherDay.dt_txt.slice(11, 16)
+                                        : weatherDay.dt_txt.slice(8, 10) + '.' + weatherDay.dt_txt.slice(5, 7) + ' ' + weatherDay.dt_txt.slice(11, 16)}
                                 </h3>
                                 <img src={getWeatherIcon(weatherDay.weather[0].icon)} alt="weatherIcon"/>
                                 <p className="main__wrapper-weather-block-right_info">{capitalizeFirstLetter(weatherDay.weather[0].description)}</p>
