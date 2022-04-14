@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {
-    getInfo2GISTC,
+    getInfoXIDTC,
     getPlacesDataTC, PlaceType, InfoPlaceType,
     setNewPlacesTC,
     setPageSize
@@ -23,16 +23,15 @@ type MapStatePropsType = {
 type MapDispatchPropsType = {
     getPlacesDataTC: (pageSize: number) => void
     setNewPlacesTC: (pageSize: number) => void
-    getInfo2GISTC: (lat: number, lon: number, placeInfoId: string) => void
+    getInfoXIDTC: (XID: string, placeInfoId: string | null) => void
     setPageSize: (pageSize: number) => void
 }
 
 type PropsType = MapStatePropsType & MapDispatchPropsType
 
-const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfo2GISTC,
+const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfoXIDTC,
                             places, placeInfo, placeInfoId, isFetching, pageSize,
                             totalPlacesCount, setPageSize, isMiniFetching}) => {
-
     useEffect(() => {
         getPlacesDataTC(pageSize)
     }, [])
@@ -41,14 +40,13 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
         setNewPlacesTC(pageSize)
     }, [pageSize])
 
-    let getInfo2GIS = (lat: number, lon: number, placeInfoId: string) => {
-        getInfo2GISTC(lat, lon, placeInfoId)
+    let getInfoXID = (XID: string, placeInfoId: string | null) => {
+        getInfoXIDTC(XID, placeInfoId)
     }
 
     let to2GIS = (lon: number, lat: number) => {
         return `https://2gis.ru/syktyvkar/geo/${lon},${lat}?m=${lon},${lat}/17.52`
     }
-
     return (
         <div className="wrapper">
             <h1>Кафе и рестораны</h1>
@@ -57,10 +55,11 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
                     {places ? places.map(p => (
                         p.properties.name != '' ?
                             (<Establishment key={p.id}
+                                            XID={p.properties.xid}
                                             name={p.properties.name}
                                             osm={p.properties.osm}
                                             coord={p.geometry.coordinates}
-                                            getInfo2GIS={getInfo2GIS}
+                                            getInfoXID={getInfoXID}
                                             to2GIS={to2GIS}
                                             placeInfo={placeInfo}
                                             placeInfoId={placeInfoId}
@@ -97,6 +96,6 @@ let mapStateToProps = (state: AppStateType) => {
 export default connect(mapStateToProps, {
     getPlacesDataTC,
     setNewPlacesTC,
-    getInfo2GISTC,
+    getInfoXIDTC,
     setPageSize
 })(Establishments)

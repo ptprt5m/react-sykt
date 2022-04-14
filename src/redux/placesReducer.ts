@@ -1,5 +1,4 @@
 import {cafesAPI} from '../api/apiPlaces'
-import {twoGisAPI, twoGisResultCode} from '../api/api2GIS'
 import {ThunkAction} from 'redux-thunk'
 import {AppStateType} from './redux'
 
@@ -126,7 +125,7 @@ type setInfoPlaceType = {
 }
 type setInfoPlaceIdType = {
     type: typeof SET_INFO_PLACE_ID
-    placeInfoId: string
+    placeInfoId: string | null
 }
 type setPageSizeType = {
     type: typeof SET_PAGE_SIZE
@@ -146,8 +145,8 @@ type toggleIsMiniFetchingType = {
 }
 
 export const setPlaces = (places: Array<PlaceType>): setPlacesType => ({type: SET_PLACES, places})
-export const setInfoPlace = (items: Array<InfoPlaceType>): setInfoPlaceType => ({type: SET_INFO_PLACE, items})
-export const setInfoPlaceId = (placeInfoId: string): setInfoPlaceIdType => ({type: SET_INFO_PLACE_ID, placeInfoId})
+export const setInfoPlace = (items: any): setInfoPlaceType => ({type: SET_INFO_PLACE, items})
+export const setInfoPlaceId = (placeInfoId: string | null): setInfoPlaceIdType => ({type: SET_INFO_PLACE_ID, placeInfoId})
 export const setPageSize = (pageSize: number): setPageSizeType => ({type: SET_PAGE_SIZE, pageSize})
 export const setTotalPlacesCount = (totalPlacesCount: number): setTotalPlacesCountType => ({
     type: SET_TOTAL_PLACES_COUNT,
@@ -173,7 +172,7 @@ export const getPlacesDataTC = (pageSize: number): ThunkAction<void, AppStateTyp
 export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsMiniFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
-
+    debugger
     if (response.features) {
         dispatch(setTotalPlacesCount(response.features.length))
         dispatch(setPlaces(response.features))
@@ -181,13 +180,10 @@ export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType
     }
 }
 
-export const getInfo2GISTC = (lat: number, lon: number, placeInfoId: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
-    let response = await twoGisAPI.getInfoAboutTarget(lat, lon)
-    //Заблокирован API KEY 2GIS, который был выдан на 3 месяца для образовательных целей
-    if (response.meta.code === twoGisResultCode.Success) {
-        dispatch(setInfoPlaceId(placeInfoId))
-        dispatch(setInfoPlace(response.result.items))
-    }
+export const getInfoXIDTC = (XID: string, placeInfoId: string | null): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
+    let response = await cafesAPI.getInfoAboutTarget(XID)
+    dispatch(setInfoPlaceId(placeInfoId))
+    dispatch(setInfoPlace(response))
 }
 
 export default placesReducer

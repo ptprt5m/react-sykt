@@ -398,7 +398,7 @@ body {
 
       &-block {
         @include flex;
-        @include wh;
+        @include wh(450px);
         justify-content: flex-start;
         background: $primary-text;
         border-radius: 20px;
@@ -413,6 +413,7 @@ body {
           @include flexColumn;
           align-items: flex-start;
           padding: 0 20px;
+          text-align: left;
 
           @media screen and (max-width: 820px) {
             margin-top: 15px;
@@ -433,6 +434,7 @@ body {
           font-size: 18px;
           color: $secondary-text;
           margin: 5px 0 10px;
+          max-width: 300px;
 
           @media screen and (max-width: 820px) {
             margin: 5px 0 0;

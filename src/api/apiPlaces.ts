@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {placesGetCafesType} from '.././types/types'
+import {placesGetCafesType} from '../types/types'
 
 const instance = axios.create({
     withCredentials: true,
@@ -7,10 +7,16 @@ const instance = axios.create({
 })
 
 const APIKEY = '5ae2e3f221c38a28845f05b69c08da77e90b0f3a322142c74593c457'
+const radiusInMeter = 5000
+const kinds = 'cafes,foods'
 
 export const cafesAPI = {
     getCafes(pageSize: number) {
-        return instance.get<placesGetCafesType>(`places/bbox?lon_min=50.78872&lat_min=61.63447&lon_max=50.8656&lat_max=61.6961&kinds=cafes&limit=${pageSize}&format=geojson&apikey=${APIKEY}`)
+        return instance.get<placesGetCafesType>(`places/radius?radius=${radiusInMeter}&lat=61.63447&lon=50.815&kinds=${kinds}&limit=${pageSize}&format=geojson&apikey=${APIKEY}`)
+            .then(responsive => responsive.data)
+    },
+    getInfoAboutTarget(XID: string) {
+        return instance.get<any>(`places/xid/${XID}?apikey=${APIKEY}`)
             .then(responsive => responsive.data)
     }
 }
