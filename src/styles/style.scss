@@ -97,7 +97,11 @@ body {
 }
 
 .primaryDark {
-  color: $primary-dark;
+  color: $primary-dark !important;
+}
+
+.newsKeyWords {
+  margin-right: 10px;
 }
 
 .all__button {
@@ -403,7 +407,7 @@ body {
         background: $primary-text;
         border-radius: 20px;
         border: 2px $primary-dark solid;
-        padding: 10px 0;
+        padding: 15px 0 25px;
 
         @media screen and (max-width: 820px) {
           @include flexColumn;
@@ -423,6 +427,7 @@ body {
           div {
             @include flexColumn;
             align-items: flex-start;
+            text-align: left;
 
             @media screen and (max-width: 820px) {
               align-items: center;
@@ -475,6 +480,11 @@ body {
         @include links(.3s all, $secondary-light);
         margin: 5px 0;
         color: $secondary;
+        &:hover {
+          &:before {
+            content: '→';
+          }
+        }
       }
     }
   }
@@ -651,25 +661,48 @@ iframe {
     max-width: 800px;
     padding-top: 2vh;
     transition: .3s all;
+    align-items: flex-start;
+    border-bottom: 3px dashed $black;
 
     &-time {
       @include att(blue, 1.4em, 4vh);
-      margin-block-start: 1em;
-      margin-block-end: 1em;
+      margin: 1em 0.2em 1em 0;
+    }
+
+    &-date {
+      @include att($primary-light, 1.4em, 4vh);
+      margin: 1em 0.5em 1em 0;
+      &:before {
+        content: '(';
+      }
+      &:after {
+        content: ')';
+      }
     }
 
     &-keys {
       @include att($secondary, 1em, 2vh);
       @include links(.3s all, $secondary-light);
+      margin: auto;
     }
 
     &-newsBlock {
       align-items: flex-start;
+      text-align: left;
+
       &_title {
         @include att($secondary-text, 1em, 5px);
       }
       &_text {
         @include att($primary, 1em, 5px);
+      }
+      &_img {
+        margin: 1em 0 2em;
+      }
+      &_upper {
+        @include flex;
+        align-items: center;
+        text-align: center;
       }
 
       p {

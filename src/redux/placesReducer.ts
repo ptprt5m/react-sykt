@@ -172,7 +172,6 @@ export const getPlacesDataTC = (pageSize: number): ThunkAction<void, AppStateTyp
 export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsMiniFetching(true))
     let response = await cafesAPI.getCafes(pageSize)
-    debugger
     if (response.features) {
         dispatch(setTotalPlacesCount(response.features.length))
         dispatch(setPlaces(response.features))

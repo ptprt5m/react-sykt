@@ -55,6 +55,7 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
                     {places ? places.map(p => (
                         p.properties.name != '' ?
                             (<Establishment key={p.id}
+                                            id={p.id}
                                             XID={p.properties.xid}
                                             name={p.properties.name}
                                             osm={p.properties.osm}

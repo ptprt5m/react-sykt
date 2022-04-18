@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import img0 from '../../../img/rest/0.png'
+import Preloader from "../../commons/Preloader";
 
 type Props = {
-    key: string
+    key?: string
+    id: string
     name: string
     osm: string
     XID: string
@@ -13,11 +15,16 @@ type Props = {
     placeInfoId: string | null
 }
 
-const Establishment: React.FC<Props> = ({key, name, osm, XID,
+const Establishment: React.FC<Props> = ({
+                                            id, name, osm, XID,
                                             coord, getInfoXID, to2GIS,
-                                            placeInfo, placeInfoId}) => {
+                                            placeInfo, placeInfoId
+                                        }) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
-        <div className="main__wrapper-item" key={key}>
+        <div className="main__wrapper-item" key={id}>
             <div className="main__wrapper-item-block">
                 <img className="main__wrapper-item-ava" src={img0} alt="restaurantPhoto"/>
                 <div className="main__wrapper-item-block_right">
@@ -25,17 +32,16 @@ const Establishment: React.FC<Props> = ({key, name, osm, XID,
                     <a target="_blank" href={'https://www.openstreetmap.org/' + osm}>Точка
                         на openstreetmap</a>
                     <button className="all__button" onClick={() => {
-                        getInfoXID(XID, key)
-                    }}>Получить больше данных
+                        getInfoXID(XID, id)
+                        setIsOpen(!isOpen)
+                    }}>{(placeInfo && placeInfoId === id && isOpen) ? 'Скрыть' : 'Получить больше данных'}
                     </button>
-
-                    {placeInfo && placeInfoId === key ?
+                    {(placeInfo && placeInfoId === id && isOpen) ?
                         <div>
-                            <p>Адрес: {placeInfo.address.city || 'Нет информации'}</p>
-                            <p>Тип строения: {placeInfo.address.road || 'Нет информации'}</p>
+                            <p>Адрес: <span className={"primaryDark"}>{placeInfo.address.road + ', ' + placeInfo.address.house_number + ' ' + (placeInfo.address.house ? '(' + placeInfo.address.house + ')' : '') || 'Нет информации'}</span></p>
+                            <p>Ссылка: {placeInfo.url ? <a href={placeInfo.url}>Сайт</a> : 'Нет информации'}</p>
                             <a target="_blank" href={to2GIS(coord[0], coord[1])}>Перейти в 2GIS</a>
                         </div> : null}
-                    <p>Координаты: {coord[0] + ' ' + coord[1]}</p>
                 </div>
             </div>
         </div>
