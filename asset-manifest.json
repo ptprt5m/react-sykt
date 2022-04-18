@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-sykt/static/css/main.f5b13907.chunk.css",
-    "main.js": "/react-sykt/static/js/main.58a07cda.chunk.js",
-    "main.js.map": "/react-sykt/static/js/main.58a07cda.chunk.js.map",
-    "runtime-main.js": "/react-sykt/static/js/runtime-main.41416e20.js",
-    "runtime-main.js.map": "/react-sykt/static/js/runtime-main.41416e20.js.map",
-    "static/js/2.bb360dd1.chunk.js": "/react-sykt/static/js/2.bb360dd1.chunk.js",
-    "static/js/2.bb360dd1.chunk.js.map": "/react-sykt/static/js/2.bb360dd1.chunk.js.map",
+    "main.css": "/react-sykt/static/css/main.386c4fca.chunk.css",
+    "main.js": "/react-sykt/static/js/main.52484054.chunk.js",
+    "main.js.map": "/react-sykt/static/js/main.52484054.chunk.js.map",
+    "runtime-main.js": "/react-sykt/static/js/runtime-main.2874f2cc.js",
+    "runtime-main.js.map": "/react-sykt/static/js/runtime-main.2874f2cc.js.map",
+    "static/js/2.7511d01d.chunk.js": "/react-sykt/static/js/2.7511d01d.chunk.js",
+    "static/js/2.7511d01d.chunk.js.map": "/react-sykt/static/js/2.7511d01d.chunk.js.map",
     "static/js/3.ec916b9e.chunk.js": "/react-sykt/static/js/3.ec916b9e.chunk.js",
     "static/js/3.ec916b9e.chunk.js.map": "/react-sykt/static/js/3.ec916b9e.chunk.js.map",
     "static/js/4.16941196.chunk.js": "/react-sykt/static/js/4.16941196.chunk.js",
     "static/js/4.16941196.chunk.js.map": "/react-sykt/static/js/4.16941196.chunk.js.map",
-    "static/js/5.8aaaee33.chunk.js": "/react-sykt/static/js/5.8aaaee33.chunk.js",
-    "static/js/5.8aaaee33.chunk.js.map": "/react-sykt/static/js/5.8aaaee33.chunk.js.map",
+    "static/js/5.22059840.chunk.js": "/react-sykt/static/js/5.22059840.chunk.js",
+    "static/js/5.22059840.chunk.js.map": "/react-sykt/static/js/5.22059840.chunk.js.map",
     "static/js/6.6ec6e4bf.chunk.js": "/react-sykt/static/js/6.6ec6e4bf.chunk.js",
     "static/js/6.6ec6e4bf.chunk.js.map": "/react-sykt/static/js/6.6ec6e4bf.chunk.js.map",
     "static/js/7.843e0868.chunk.js": "/react-sykt/static/js/7.843e0868.chunk.js",
     "static/js/7.843e0868.chunk.js.map": "/react-sykt/static/js/7.843e0868.chunk.js.map",
     "index.html": "/react-sykt/index.html",
-    "static/css/main.f5b13907.chunk.css.map": "/react-sykt/static/css/main.f5b13907.chunk.css.map",
-    "static/js/2.bb360dd1.chunk.js.LICENSE.txt": "/react-sykt/static/js/2.bb360dd1.chunk.js.LICENSE.txt",
+    "static/css/main.386c4fca.chunk.css.map": "/react-sykt/static/css/main.386c4fca.chunk.css.map",
+    "static/js/2.7511d01d.chunk.js.LICENSE.txt": "/react-sykt/static/js/2.7511d01d.chunk.js.LICENSE.txt",
     "static/js/3.ec916b9e.chunk.js.LICENSE.txt": "/react-sykt/static/js/3.ec916b9e.chunk.js.LICENSE.txt",
     "static/media/0.92e98af4.png": "/react-sykt/static/media/0.92e98af4.png",
     "static/media/15.7311d36e.jpg": "/react-sykt/static/media/15.7311d36e.jpg",
@@ -51,9 +51,9 @@
     "static/media/user.5d5b6a5d.jpg": "/react-sykt/static/media/user.5d5b6a5d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.41416e20.js",
-    "static/js/2.bb360dd1.chunk.js",
-    "static/css/main.f5b13907.chunk.css",
-    "static/js/main.58a07cda.chunk.js"
+    "static/js/runtime-main.2874f2cc.js",
+    "static/js/2.7511d01d.chunk.js",
+    "static/css/main.386c4fca.chunk.css",
+    "static/js/main.52484054.chunk.js"
   ]
 }
