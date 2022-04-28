@@ -3,7 +3,7 @@
 }
 
 .ldsRoller {
-    display: inline-block;
+    display: inline-block !important;
     position: relative;
     width: 80px;
     height: 80px;

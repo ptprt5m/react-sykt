@@ -84,7 +84,7 @@ const News = () => {
                         <div className={'news__wrapper-newsBlock'}>
                             <p className={'news__wrapper-newsBlock_title'}>{news.title}</p>
                             <p className={'news__wrapper-newsBlock_text'}>{news.text}</p>
-                            <img className={'news__wrapper-newsBlock_img'} src={news.imageURL} alt="newsImageURL"/>
+                            <img className={'news__wrapper-newsBlock_img'} src={news.imageURL} alt='newsImageURL'/>
                         </div>
                     </div>
                 )

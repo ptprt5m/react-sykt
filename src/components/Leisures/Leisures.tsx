@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react'
+import Preloader from '../commons/Preloader'
+import {AppStateType} from '../../redux/redux'
 import {connect} from 'react-redux'
 import {
     getInfoXIDTC,
-    getPlacesDataTC, PlaceType, InfoPlaceType,
+    getPlacesDataTC,
+    InfoPlaceType,
+    PlaceType,
     setNewPlacesTC,
     setPageSize
 } from '../../redux/placesReducer'
-import Preloader from '../commons/Preloader'
-import {AppStateType} from '../../redux/redux'
-import Establishment from './Establishment'
+import Leisure from "./Leisure";
 
 type MapStatePropsType = {
     places: Array<PlaceType> | null
@@ -16,6 +18,7 @@ type MapStatePropsType = {
     placeInfoId: string | null
     isFetching: boolean
     isMiniFetching: boolean
+    isXidFetching: boolean
     pageSize: number
     totalPlacesCount: number
 }
@@ -29,15 +32,15 @@ type MapDispatchPropsType = {
 
 type PropsType = MapStatePropsType & MapDispatchPropsType
 
-const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfoXIDTC,
-                            places, placeInfo, placeInfoId, isFetching, pageSize,
-                            totalPlacesCount, setPageSize, isMiniFetching}) => {
+const Leisures: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfoXIDTC,
+                     places, placeInfo, placeInfoId, isFetching, pageSize,
+                     totalPlacesCount, setPageSize, isMiniFetching, isXidFetching}) => {
     useEffect(() => {
-        getPlacesDataTC(pageSize, 'cafes,foods')
+        getPlacesDataTC(pageSize, 'cultural')
     }, [])
 
     useEffect(() => {
-        setNewPlacesTC(pageSize, 'cafes,foods')
+        setNewPlacesTC(pageSize, 'cultural')
     }, [pageSize])
 
     let getInfoXID = (XID: string, placeInfoId: string | null) => {
@@ -49,12 +52,12 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
     }
     return (
         <div className="wrapper">
-            <h1>Кафе и рестораны</h1>
+            <h1>Кино и театры</h1>
             {isFetching ? <Preloader/> :
                 <div className="main__wrapper-items">
                     {places ? places.map(p => (
                         p.properties.name != '' ?
-                            (<Establishment key={p.id}
+                            (<Leisure key={p.id}
                                             id={p.id}
                                             XID={p.properties.xid}
                                             name={p.properties.name}
@@ -64,6 +67,7 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
                                             to2GIS={to2GIS}
                                             placeInfo={placeInfo}
                                             placeInfoId={placeInfoId}
+                                            isXidFetching={isXidFetching}
                             />) : null
                     )) : null}
                 </div>
@@ -89,6 +93,7 @@ let mapStateToProps = (state: AppStateType) => {
         placeInfoId: state.places.placeInfoId,
         isFetching: state.places.isFetching,
         isMiniFetching: state.places.isMiniFetching,
+        isXidFetching: state.places.isXidFetching,
         pageSize: state.places.pageSize,
         totalPlacesCount: state.places.totalPlacesCount
     }
@@ -99,4 +104,4 @@ export default connect(mapStateToProps, {
     setNewPlacesTC,
     getInfoXIDTC,
     setPageSize
-})(Establishments)
+})(Leisures)

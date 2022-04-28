@@ -8,10 +8,9 @@ const instance = axios.create({
 
 const APIKEY = '5ae2e3f221c38a28845f05b69c08da77e90b0f3a322142c74593c457'
 const radiusInMeter = 5000
-const kinds = 'cafes,foods'
 
 export const cafesAPI = {
-    getCafes(pageSize: number) {
+    getObjects(pageSize: number, kinds: string) {
         return instance.get<placesGetCafesType>(`places/radius?radius=${radiusInMeter}&lat=61.63447&lon=50.815&kinds=${kinds}&limit=${pageSize}&format=geojson&apikey=${APIKEY}`)
             .then(responsive => responsive.data)
     },

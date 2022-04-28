@@ -7,6 +7,7 @@ import establishments from '../../img/homepageLinks/delicious.png'
 import map from '../../img/homepageLinks/navigation.png'
 import weather from '../../img/homepageLinks/rain.png'
 import news from '../../img/homepageLinks/news.png'
+import stage from '../../img/homepageLinks/stage.png'
 
 const HomepageLinks = () => {
     return (
@@ -51,6 +52,12 @@ const HomepageLinks = () => {
                 <div className='homepageLinks__wrapper-item'>
                     <img className='homepageLinks__wrapper-item_icon' src={news} alt="news"/>
                     <p className='homepageLinks__wrapper-item_title'>Новости</p>
+                </div>
+            </Link>
+            <Link to={"/leisure"}>
+                <div className='homepageLinks__wrapper-item'>
+                    <img className='homepageLinks__wrapper-item_icon' src={stage} alt="leisure"/>
+                    <p className='homepageLinks__wrapper-item_title'>Досуг</p>
                 </div>
             </Link>
         </div>

@@ -21,6 +21,7 @@ import Profile from './components/Profile'
 import Preloader from './components/commons/Preloader'
 import {AppStateType} from './redux/redux'
 import News from './components/News'
+import Leisure from './components/Leisures'
 
 const Stars = React.lazy(() => import('./components/Stars/Stars'))
 const Map = React.lazy(() => import('./components/Map/Map'))
@@ -58,6 +59,7 @@ const App: React.FC<Props> = (props) => {
                         <Route path='/about' element={<About/>}/>
                         <Route path='/attractions' element={<Attractions/>}/>
                         <Route path='/establishments' element={<Establishments/>}/>
+                        <Route path='/leisure' element={<Leisure/>}/>
                         <Route path='/stars' element={<Stars/>}/>
                         <Route path='/map' element={<Map/>}/>
                         <Route path='/weather/*' element={<Weather/>}/>

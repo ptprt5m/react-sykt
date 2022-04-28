@@ -8,6 +8,7 @@ const SET_INFO_PLACE_ID = 'weatherReducer/SET_INFO_PLACE_ID'
 const SET_PAGE_SIZE = 'weatherReducer/SET_PAGE_SIZE'
 const TOGGLE_IS_FETCHING = 'weatherReducer/TOGGLE_IS_FETCHING'
 const TOGGLE_IS_MINI_FETCHING = 'weatherReducer/TOGGLE_IS_MINI_FETCHING'
+const TOGGLE_IS_XID_FETCHING = 'weatherReducer/TOGGLE_IS_XID_FETCHING'
 const SET_TOTAL_PLACES_COUNT = 'weatherReducer/SET_TOTAL_PLACES_COUNT'
 
 export type InfoPlaceType = {
@@ -50,6 +51,7 @@ type initialStateType = {
     placeInfoId: string | null
     isFetching: boolean
     isMiniFetching: boolean
+    isXidFetching: boolean
     pageSize: number
     totalPlacesCount: number
 }
@@ -60,6 +62,7 @@ let initialState: initialStateType = {
     placeInfoId: null,
     isFetching: false,
     isMiniFetching: false,
+    isXidFetching: false,
     pageSize: 10,
     totalPlacesCount: 0
 }
@@ -107,13 +110,19 @@ const placesReducer = (state = initialState, action: ActionType): initialStateTy
                 isMiniFetching: action.isMiniFetching
             };
         }
+        case TOGGLE_IS_XID_FETCHING: {
+            return {
+                ...state,
+                isXidFetching: action.isXidFetching
+            };
+        }
         default:
             return state;
     }
 }
 
 type ActionType = setPlacesType | setInfoPlaceType | setInfoPlaceIdType | setPageSizeType
-    | setTotalPlacesCountType | toggleIsFetchingType | toggleIsMiniFetchingType
+    | setTotalPlacesCountType | toggleIsFetchingType | toggleIsMiniFetchingType | toggleIsXidFetchingType
 
 type setPlacesType = {
     type: typeof SET_PLACES
@@ -143,6 +152,10 @@ type toggleIsMiniFetchingType = {
     type: typeof TOGGLE_IS_MINI_FETCHING
     isMiniFetching: boolean
 }
+type toggleIsXidFetchingType = {
+    type: typeof TOGGLE_IS_XID_FETCHING
+    isXidFetching: boolean
+}
 
 export const setPlaces = (places: Array<PlaceType>): setPlacesType => ({type: SET_PLACES, places})
 export const setInfoPlace = (items: any): setInfoPlaceType => ({type: SET_INFO_PLACE, items})
@@ -157,10 +170,14 @@ export const toggleIsMiniFetching = (isMiniFetching: boolean): toggleIsMiniFetch
     type: TOGGLE_IS_MINI_FETCHING,
     isMiniFetching
 })
+export const toggleIsXidFetching = (isXidFetching: boolean): toggleIsXidFetchingType => ({
+    type: TOGGLE_IS_XID_FETCHING,
+    isXidFetching
+})
 
-export const getPlacesDataTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
+export const getPlacesDataTC = (pageSize: number, kinds: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsFetching(true))
-    let response = await cafesAPI.getCafes(pageSize)
+    let response = await cafesAPI.getObjects(pageSize, kinds)
 
     if (response.features) {
         dispatch(setTotalPlacesCount(response.features.length))
@@ -169,9 +186,9 @@ export const getPlacesDataTC = (pageSize: number): ThunkAction<void, AppStateTyp
     }
 }
 
-export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
+export const setNewPlacesTC = (pageSize: number, kinds: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
     dispatch(toggleIsMiniFetching(true))
-    let response = await cafesAPI.getCafes(pageSize)
+    let response = await cafesAPI.getObjects(pageSize, kinds)
     if (response.features) {
         dispatch(setTotalPlacesCount(response.features.length))
         dispatch(setPlaces(response.features))
@@ -180,9 +197,11 @@ export const setNewPlacesTC = (pageSize: number): ThunkAction<void, AppStateType
 }
 
 export const getInfoXIDTC = (XID: string, placeInfoId: string | null): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
+    dispatch(toggleIsXidFetching(true))
     let response = await cafesAPI.getInfoAboutTarget(XID)
     dispatch(setInfoPlaceId(placeInfoId))
     dispatch(setInfoPlace(response))
+    dispatch(toggleIsXidFetching(false))
 }
 
 export default placesReducer

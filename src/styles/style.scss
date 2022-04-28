@@ -118,6 +118,10 @@ body {
   transition: 0.3s all;
   cursor: pointer;
 
+  @media screen and (max-width: 414px) {
+    padding: 0 5px;
+  }
+
   &:hover, &:active, &:focus {
     background: $primary;
   }
@@ -166,34 +170,43 @@ body {
       text-align: left;
     }
   }
+
   &__section-right {
     @media screen and (max-width: 820px) {
       padding-right: 25px;
     }
+
     .active {
       color: $secondary;
     }
+
     a {
       @include links(.2s all, $secondary);
     }
+
     ul {
       margin: 0 10px 0 0;
     }
+
     nav {
       @media screen and (max-width: 820px) {
         display: none;
       }
     }
   }
+
   &__item {
     padding: 10px 15px;
     margin: 0 10px;
+
     a {
       color: $primary-text;
     }
   }
+
   &__logo {
     font-size: 1.7em;
+
     &:hover {
       cursor: pointer;
     }
@@ -346,6 +359,7 @@ body {
         div {
           @include flexColumn;
           justify-content: flex-start;
+
           p {
             margin: 0 0 15px;
           }
@@ -354,17 +368,21 @@ body {
         &-right {
           @include flexColumn;
           align-items: center;
+
           &_temp {
             @include flex;
             font-size: 3em;
             margin: 0;
           }
+
           &_info {
             @include wh(100px)
           }
+
           &_wind {
             @include flex;
           }
+
           &_miniIcon {
             @include wh(35px, 35px);
             margin: 0 10px;
@@ -411,6 +429,7 @@ body {
 
         @media screen and (max-width: 820px) {
           @include flexColumn;
+          width: 100%;
         }
 
         &_right {
@@ -422,6 +441,7 @@ body {
           @media screen and (max-width: 820px) {
             margin-top: 15px;
             align-items: center;
+            text-align: center;
           }
 
           div {
@@ -480,6 +500,7 @@ body {
         @include links(.3s all, $secondary-light);
         margin: 5px 0;
         color: $secondary;
+
         &:hover {
           &:before {
             content: '→';
@@ -501,15 +522,18 @@ body {
     @media screen and (max-width: 1024px) {
       border: 0;
     }
+
     &-text {
       font-size: 1.3em;
       line-height: 1.5em;
       word-spacing: 0.1em;
       padding: 0 20px;
       text-align: left;
+
       &:not(:first-child) {
         margin: 35px 0 0px;
       }
+
       &:first-child {
         margin: 0;
       }
@@ -518,8 +542,10 @@ body {
         padding: 0;
       }
     }
+
     &-block {
       @include flexColumn;
+
       &_img {
         @include wh(100%);
         padding: 0 20px;
@@ -529,6 +555,7 @@ body {
           padding: 0;
         }
       }
+
       &_span {
         font-size: 0.85em;
         color: $darkGray;
@@ -545,6 +572,7 @@ body {
   &__wrapper {
     &-links {
       @include flex;
+
       .active {
         background: $main-bg;
       }
@@ -554,6 +582,7 @@ body {
       }
 
     }
+
     &-link {
       @include wh(20%);
       @include links(.2s all, $primary);
@@ -562,6 +591,7 @@ body {
       padding: 7px 15px;
       background: $light-bg;
       transition: .3s all;
+
       &:hover, &:focus, &:active {
         cursor: pointer;
       }
@@ -572,6 +602,7 @@ body {
         margin-bottom: 7px;
       }
     }
+
     &-qwe {
       background: $main-bg;
       border-radius: 0 0 20px 20px;
@@ -581,23 +612,29 @@ body {
         border-radius: 0;
       }
     }
+
     &-content {
       @include flexColumn;
       align-items: flex-start;
     }
+
     &-block {
       @include flex;
       justify-content: center;
+
       &_temp {
         font-size: 3em;
         margin: 0;
       }
+
       &-left {
         @include flex;
       }
+
       &-right {
         text-align: left;
       }
+
       &-pressure, &-humidity, &-wind {
         @include flex;
         text-align: left;
@@ -608,13 +645,15 @@ body {
         align-items: flex-start;
       }
     }
+
     &-down {
       @include flex;
+
       div {
         margin-right: 40px;
 
         @media screen and (max-width: 820px) {
-         margin: 0;
+          margin: 0;
         }
       }
 
@@ -623,10 +662,12 @@ body {
         align-items: flex-start;
       }
     }
+
     &-miniIcon {
       @include wh(35px, 35px);
       margin-right: 10px;
     }
+
     &-icon {
       border-radius: 20px;
       margin: 0 20px;
@@ -650,6 +691,115 @@ iframe {
 
 //Yandex map styles end
 
+//Leisure styles start
+
+.leisure {
+  @include flexColumn;
+  @include wh(70vw);
+  margin: auto;
+  max-width: 800px;
+  padding-top: 3vh;
+  transition: .3s all;
+
+  &__wrapper {
+    @include flex;
+    @include wh(100%);
+    justify-content: flex-start;
+    background: $light-bg;
+    border: 2px solid $primary-dark;
+    border-radius: 20px;
+    padding: 25px 10px 25px;
+    align-items: flex-start;
+
+    @media screen and (max-width: 820px) {
+      @include flexColumn;
+    }
+
+    &-ava {
+      @include wh(100px, 100px);
+      padding: 0 20px;
+    }
+
+    &-block {
+      @include flexColumn;
+      align-items: flex-start;
+      padding: 0 20px;
+      text-align: left;
+
+      @media screen and (max-width: 820px) {
+        margin-top: 15px;
+        align-items: center;
+        text-align: center;
+      }
+
+      &-photo {
+        @include wh(45vw);
+
+        @media screen and (max-width: 1024px) {
+          width: 100%;
+        }
+
+        @media screen and (max-width: 820px) {
+          width: 350px;
+        }
+
+        @media screen and (max-width: 650px) {
+          width: 275px;
+        }
+
+        @media screen and (max-width: 414px) {
+          width: 200px;
+        }
+      }
+
+      h4 {
+        font-size: 18px;
+        color: $secondary-text;
+        margin: 5px 0 10px;
+        max-width: 300px;
+
+        @media screen and (max-width: 820px) {
+          margin: 5px 0 0;
+        }
+      }
+
+      a {
+        @include links(.3s all, $secondary-light);
+        margin: 5px 0;
+        color: $secondary;
+
+        &:hover {
+          &:before {
+            content: '→';
+          }
+        }
+      }
+
+      p {
+        @include att($darkGray, 1em, 5px);
+        margin: 5px 0;
+      }
+
+      span {
+        @include att($secondary, 1em, 2vh);
+      }
+
+      div {
+        @include flexColumn;
+        align-items: flex-start;
+        text-align: left;
+
+        @media screen and (max-width: 820px) {
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+//Leisure styles end
+
 //News styles start
 
 .news {
@@ -672,9 +822,11 @@ iframe {
     &-date {
       @include att($primary-light, 1.4em, 4vh);
       margin: 1em 0.5em 1em 0;
+
       &:before {
         content: '(';
       }
+
       &:after {
         content: ')';
       }
@@ -693,12 +845,15 @@ iframe {
       &_title {
         @include att($secondary-text, 1em, 5px);
       }
+
       &_text {
         @include att($primary, 1em, 5px);
       }
+
       &_img {
         margin: 1em 0 2em;
       }
+
       &_upper {
         @include flex;
         align-items: center;
@@ -803,6 +958,7 @@ iframe {
     max-width: 250px;
     margin: 10px 10px;
     transition: .2s all;
+
     &:hover, &:active, &:focus {
       background: $main-bg;
       //border: 3px solid $secondary-text;
@@ -810,12 +966,14 @@ iframe {
         background: $primary-text;
       }
     }
+
     &_icon {
       @include wh(100px, 100px);
       border-radius: 20px;
       padding: 10px;
       margin-bottom: 10px;
     }
+
     &_title {
       margin: 0;
     }
