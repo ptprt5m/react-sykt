@@ -113,7 +113,8 @@ const placesReducer = (state = initialState, action: ActionType): initialStateTy
         case TOGGLE_IS_XID_FETCHING: {
             return {
                 ...state,
-                isXidFetching: action.isXidFetching
+                isXidFetching: action.isXidFetching,
+                placeInfoId: action.placeInfoId
             };
         }
         default:
@@ -155,6 +156,7 @@ type toggleIsMiniFetchingType = {
 type toggleIsXidFetchingType = {
     type: typeof TOGGLE_IS_XID_FETCHING
     isXidFetching: boolean
+    placeInfoId: string | null
 }
 
 export const setPlaces = (places: Array<PlaceType>): setPlacesType => ({type: SET_PLACES, places})
@@ -170,9 +172,10 @@ export const toggleIsMiniFetching = (isMiniFetching: boolean): toggleIsMiniFetch
     type: TOGGLE_IS_MINI_FETCHING,
     isMiniFetching
 })
-export const toggleIsXidFetching = (isXidFetching: boolean): toggleIsXidFetchingType => ({
+export const toggleIsXidFetching = (isXidFetching: boolean, placeInfoId: string | null): toggleIsXidFetchingType => ({
     type: TOGGLE_IS_XID_FETCHING,
-    isXidFetching
+    isXidFetching,
+    placeInfoId
 })
 
 export const getPlacesDataTC = (pageSize: number, kinds: string): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
@@ -196,12 +199,12 @@ export const setNewPlacesTC = (pageSize: number, kinds: string): ThunkAction<voi
     }
 }
 
-export const getInfoXIDTC = (XID: string, placeInfoId: string | null): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
-    dispatch(toggleIsXidFetching(true))
+export const getInfoXIDTC = (XID: string, id: string | null): ThunkAction<void, AppStateType, unknown, ActionType> => async (dispatch) => {
+    dispatch(toggleIsXidFetching(true, id))
     let response = await cafesAPI.getInfoAboutTarget(XID)
-    dispatch(setInfoPlaceId(placeInfoId))
+    dispatch(setInfoPlaceId(id))
     dispatch(setInfoPlace(response))
-    dispatch(toggleIsXidFetching(false))
+    dispatch(toggleIsXidFetching(false, id))
 }
 
 export default placesReducer

@@ -18,6 +18,7 @@ type MapStatePropsType = {
     isMiniFetching: boolean
     pageSize: number
     totalPlacesCount: number
+    isXidFetching: boolean
 }
 
 type MapDispatchPropsType = {
@@ -31,7 +32,7 @@ type PropsType = MapStatePropsType & MapDispatchPropsType
 
 const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfoXIDTC,
                             places, placeInfo, placeInfoId, isFetching, pageSize,
-                            totalPlacesCount, setPageSize, isMiniFetching}) => {
+                            totalPlacesCount, setPageSize, isMiniFetching, isXidFetching}) => {
     useEffect(() => {
         getPlacesDataTC(pageSize, 'cafes,foods')
     }, [])
@@ -64,6 +65,7 @@ const Establishments: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, g
                                             to2GIS={to2GIS}
                                             placeInfo={placeInfo}
                                             placeInfoId={placeInfoId}
+                                            isXidFetching={isXidFetching}
                             />) : null
                     )) : null}
                 </div>
@@ -89,6 +91,7 @@ let mapStateToProps = (state: AppStateType) => {
         placeInfoId: state.places.placeInfoId,
         isFetching: state.places.isFetching,
         isMiniFetching: state.places.isMiniFetching,
+        isXidFetching: state.places.isXidFetching,
         pageSize: state.places.pageSize,
         totalPlacesCount: state.places.totalPlacesCount
     }

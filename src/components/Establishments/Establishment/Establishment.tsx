@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import img0 from '../../../img/rest/0.png'
 import Preloader from "../../commons/Preloader";
+import MoreInfo from "./MoreInfo";
 
 type Props = {
     key?: string
@@ -13,12 +14,13 @@ type Props = {
     to2GIS: (lon: number, lat: number) => string
     placeInfo: any | null
     placeInfoId: string | null
+    isXidFetching: boolean
 }
 
 const Establishment: React.FC<Props> = ({
                                             id, name, osm, XID,
                                             coord, getInfoXID, to2GIS,
-                                            placeInfo, placeInfoId
+                                            placeInfo, placeInfoId, isXidFetching
                                         }) => {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -31,17 +33,19 @@ const Establishment: React.FC<Props> = ({
                     <h4>{name}</h4>
                     <a target="_blank" href={'https://www.openstreetmap.org/' + osm}>Точка
                         на openstreetmap</a>
-                    <button className="all__button" onClick={() => {
-                        getInfoXID(XID, id)
-                        setIsOpen(!isOpen)
-                    }}>{(placeInfo && placeInfoId === id && isOpen) ? 'Скрыть' : 'Получить больше данных'}
+                    <button className="all__button"
+                            disabled={isXidFetching}
+                            onClick={() => {
+                                if (!isOpen) {
+                                    getInfoXID(XID, id)
+                                }
+                                setIsOpen(!isOpen)
+                            }}>{(placeInfo && placeInfoId === id && isOpen) ? 'Скрыть' : 'Получить больше данных'}
                     </button>
-                    {(placeInfo && placeInfoId === id && isOpen) ?
-                        <div>
-                            <p>Адрес: <span className={"primaryDark"}>{placeInfo.address.road + ', ' + placeInfo.address.house_number + ' ' + (placeInfo.address.house ? '(' + placeInfo.address.house + ')' : '') || 'Нет информации'}</span></p>
-                            <p>Ссылка: {placeInfo.url ? <a href={placeInfo.url}>Сайт</a> : 'Нет информации'}</p>
-                            <a target="_blank" href={to2GIS(coord[0], coord[1])}>Перейти в 2GIS</a>
-                        </div> : null}
+                    {isXidFetching && placeInfoId === id ? <Preloader/> :
+                        (placeInfo && placeInfoId === id && isOpen) ?
+                            <MoreInfo placeInfo={placeInfo} to2GIS={to2GIS} coord={coord}/> : null
+                    }
                 </div>
             </div>
         </div>

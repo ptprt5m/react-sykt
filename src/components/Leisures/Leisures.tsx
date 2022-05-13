@@ -43,8 +43,8 @@ const Leisures: React.FC<PropsType> = ({getPlacesDataTC, setNewPlacesTC, getInfo
         setNewPlacesTC(pageSize, 'cultural')
     }, [pageSize])
 
-    let getInfoXID = (XID: string, placeInfoId: string | null) => {
-        getInfoXIDTC(XID, placeInfoId)
+    let getInfoXID = (XID: string, id: string | null) => {
+        getInfoXIDTC(XID, id)
     }
 
     let to2GIS = (lon: number, lat: number) => {
