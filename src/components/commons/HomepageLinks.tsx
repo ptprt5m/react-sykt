@@ -1,13 +1,13 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import about from '../../img/homepageLinks/city.png'
-import attractions from '../../img/homepageLinks/eiffel-tower.png'
-import celebrity from '../../img/homepageLinks/celebrity.png'
-import establishments from '../../img/homepageLinks/delicious.png'
-import map from '../../img/homepageLinks/navigation.png'
-import weather from '../../img/homepageLinks/rain.png'
-import news from '../../img/homepageLinks/news.png'
-import stage from '../../img/homepageLinks/stage.png'
+import about from '../../img/homepageLinks/city.webp'
+import attractions from '../../img/homepageLinks/eiffel-tower.webp'
+import celebrity from '../../img/homepageLinks/celebrity.webp'
+import establishments from '../../img/homepageLinks/delicious.webp'
+import map from '../../img/homepageLinks/navigation.webp'
+import weather from '../../img/homepageLinks/rain.webp'
+import news from '../../img/homepageLinks/news.webp'
+import stage from '../../img/homepageLinks/stage.webp'
 
 const HomepageLinks = () => {
     return (

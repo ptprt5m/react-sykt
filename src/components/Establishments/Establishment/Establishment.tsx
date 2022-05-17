@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import img0 from '../../../img/rest/0.png'
+import img0 from '../../../img/rest/0.webp'
 import Preloader from "../../commons/Preloader";
 import MoreInfo from "./MoreInfo";
 

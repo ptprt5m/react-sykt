@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import cinema from '../../../img/homepageLinks/cinema.png'
+import cinema from '../../../img/homepageLinks/cinema.webp'
 import Preloader from '../../commons/Preloader'
 import MoreInfo from './MoreInfo'
 

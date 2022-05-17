@@ -7,6 +7,7 @@
   color: $color;
   font-weight: $fw;
   letter-spacing: $ls;
+  font-display: swap;
   @content;
 }
 
