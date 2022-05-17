@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {NavLink, Navigate, Route, Routes} from 'react-router-dom'
+import {NavLink, Navigate, Route, Routes, useNavigate} from 'react-router-dom'
 import WeatherNow from './WeatherNow'
 import WeatherToday from './WeatherToday'
 import WeatherTomorrow from './WeatherTomorrow'
@@ -61,11 +61,11 @@ const Weather = () => {
                     <Route path='fiveDays' element={<WeatherFiveDays tempColor={tempColor}
                                                                      getWeatherIcon={getWeatherIcon}
                                                                      capitalizeFirstLetter={capitalizeFirstLetter}/>}/>
-                    <Route path='' element={<h3>Выбирайте время или дату выше</h3>}/>
+                    <Route path='' element={<Navigate to={'now'} />}/>
                 </Routes>
             </div>
         </div>
-    )
+    );
 }
 
 export default Weather

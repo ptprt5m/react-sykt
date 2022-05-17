@@ -22,6 +22,7 @@ import Preloader from './components/commons/Preloader'
 import {AppStateType} from './redux/redux'
 import News from './components/News'
 import Leisure from './components/Leisures'
+import Error404Page from './components/commons/Error404Page'
 
 const Stars = React.lazy(() => import('./components/Stars/Stars'))
 const Map = React.lazy(() => import('./components/Map/Map'))
@@ -72,7 +73,7 @@ const App: React.FC<Props> = (props) => {
                         <Route path='/forgot' element={<Forgot/>}/>
                         <Route path='/signUp' element={<SignUp/>}/>
 
-                        <Route path='*' element={<div>404 NOT FOUND</div>}/>
+                        <Route path='*' element={<Error404Page />}/>
                     </Routes>
                 </React.Suspense>
             </main>

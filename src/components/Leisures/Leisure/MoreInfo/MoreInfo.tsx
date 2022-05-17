@@ -9,7 +9,6 @@ type Props = {
 }
 
 const MoreInfo: React.FC<Props> = ({placeInfo, to2GIS, coord}) => {
-    debugger
     return (
         <div>
             <p>Фото: {(placeInfo.preview) ?

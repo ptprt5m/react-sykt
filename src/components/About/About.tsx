@@ -4,7 +4,6 @@ import up from '../../img/about/up.jpg'
 import mondi from '../../img/about/mondi.jpg'
 import sgu from '../../img/about/sgu.jpg'
 import drama from '../../img/about/drama.jpg'
-import LazyLoad from 'react-lazyload'
 import Img from '../commons/Img'
 
 const About = () => {

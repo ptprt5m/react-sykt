@@ -734,11 +734,7 @@ iframe {
       }
 
       &-photo {
-        @include wh(45vw);
-
-        @media screen and (max-width: 1024px) {
-          width: 100%;
-        }
+        width: 100%;
 
         @media screen and (max-width: 820px) {
           width: 350px;
@@ -798,11 +794,23 @@ iframe {
     }
   }
 }
-
 //Leisure styles end
 
-//News styles start
+//404 styles start
 
+.error404 {
+  &__wrapper {
+    @include flexColumn;
+    img {
+      margin-bottom: 50px;
+      cursor: pointer;
+    }
+  }
+}
+
+//404 styles end
+
+//News styles start
 .news {
   &__wrapper {
     @include flexColumn;
