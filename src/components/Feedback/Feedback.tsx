@@ -56,8 +56,14 @@ const Feedback: React.FC<FeedbackPropsType> = ({email}) => {
 
     return (
         <div className="wrapper">
-            <div className="main__wrapper">
+            <div className="feedback__wrapper">
                 {/*<FeedbackReduxForm email={email} onSubmit={onSubmit}/>*/}
+                <h1>Обратная связь</h1>
+                <div>
+                    <p><span>По всем вопросам и пожеланиям можете писать лично мне в Telegram: </span><a
+                        className="red" href="https://t.me/ptprt5m">@ptprt5m</a></p>
+                    <p><span>Либо на почту: </span><span className="red">pt.prt@ya.ru</span></p>
+                </div>
             </div>
         </div>
     )

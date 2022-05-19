@@ -72,6 +72,10 @@ body {
   font-size: 17px;
 }
 
+.feedback__wrapper {
+  @include flexColumn;
+}
+
 .yandex__pay {
   margin-top: 40px;
   width: 50vw;

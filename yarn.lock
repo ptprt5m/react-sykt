@@ -1951,6 +1951,11 @@
   dependencies:
     "source-map" "^0.6.1"
 
+"@types/vivus@^0.4.4":
+  "integrity" "sha512-eE7dV8JjjkLpTvZKQomknJssib0A1kCkC7fG1NMVSp/4Am/gjNsn9o0XtZXNmXJYHVddHbHL/M0OJIVhoVioeA=="
+  "resolved" "https://registry.npmjs.org/@types/vivus/-/vivus-0.4.4.tgz"
+  "version" "0.4.4"
+
 "@types/webpack-sources@*":
   "integrity" "sha512-LXn/oYIpBeucgP1EIJbKQ2/4ZmpvRl+dlrFdX7+94SKRUV3Evy3FsfMZY318vGhkWUS5MPhtOM3w1/hCOAOXcg=="
   "resolved" "https://registry.npmjs.org/@types/webpack-sources/-/webpack-sources-2.1.0.tgz"
