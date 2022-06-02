@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom'
 import about from '../../img/homepageLinks/city.webp'
 import attractions from '../../img/homepageLinks/eiffel-tower.webp'
 import celebrity from '../../img/homepageLinks/celebrity.webp'
@@ -8,8 +8,10 @@ import map from '../../img/homepageLinks/navigation.webp'
 import weather from '../../img/homepageLinks/rain.webp'
 import news from '../../img/homepageLinks/news.webp'
 import stage from '../../img/homepageLinks/stage.webp'
+import anime from 'animejs'
 
 const HomepageLinks = () => {
+
     return (
         <div className='homepageLinks__wrapper'>
             <Link to={"/about"}>

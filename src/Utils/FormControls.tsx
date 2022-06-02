@@ -1,7 +1,13 @@
 import React from 'react'
 import classes from './FormControls.module.css'
 
-export const Textarea = ({input, meta, ...props}) => {
+type PropsType = {
+    input: any
+    meta: any
+    placeholder: any
+}
+
+export const Textarea: React.FC<PropsType> = ({input, meta, ...props}) => {
     let hasError = meta.touched && meta.error
     return (
         <div>
@@ -17,7 +23,7 @@ export const Textarea = ({input, meta, ...props}) => {
 }
 
 
-export const Input = ({input, meta, ...props}) => {
+export const Input: React.FC<PropsType> = ({input, meta, ...props}) => {
     let hasError = meta.touched && meta.error
     return (
         <div>

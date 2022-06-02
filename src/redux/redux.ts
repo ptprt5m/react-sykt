@@ -5,12 +5,14 @@ import thunkMiddleware from 'redux-thunk'
 import placesReducer from './placesReducer'
 import appReducer from './appReducer'
 import weatherReducer from './weatherReducer'
+import staticReducer from './staticReducer'
 
 let rootReducer = combineReducers({
     login: loginReducer,
     app: appReducer,
     weather: weatherReducer,
     places: placesReducer,
+    static: staticReducer,
     form: formReducer
 })
 
