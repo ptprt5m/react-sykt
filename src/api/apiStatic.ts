@@ -12,9 +12,20 @@ export type AttractionsType = {
     address: string
 }
 
+export type StarsType = {
+    img: string
+    title: string
+    desc: string
+    fact: string
+}
+
 export const staticAPI = {
     getAttractions() {
         return instance.get<AttractionsType[]>(`attractions`)
+            .then(responsive => responsive)
+    },
+    getStars() {
+        return instance.get<StarsType[]>(`stars`)
             .then(responsive => responsive)
     }
 }
