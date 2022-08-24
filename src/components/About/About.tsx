@@ -54,11 +54,11 @@ const About = () => {
                     className="secondary">40</span> промышленных
                     предприятий, одна треть которых имеет всероссийское значение. Среди них крупнейшее в Европе
                     предприятие по производству картонно-бумажной продукции — <span
-                    className="gold">ОАО</span> «Монди Сыктывкарский ЛПК», <span
-                    className="gold">ОАО</span> «Сыктывкар Тиссью Групп» — одна из ведущих российский компаний по
-                    производству санитарно-гигиенической продукции, <span className="gold">ОАО</span> «Комитекс»
-                    — фабрика нетканых материалов, <span className="gold">ООО</span> «Сыктывкарский фанерный
-                    завод», <span className="gold">ОАО</span> «Сыктывкарский ликеро-водочный завод» — ведущий
+                    className="boldGreen">ОАО</span> «Монди Сыктывкарский ЛПК», <span
+                    className="boldGreen">ОАО</span> «Сыктывкар Тиссью Групп» — одна из ведущих российский компаний по
+                    производству санитарно-гигиенической продукции, <span className="boldGreen">ОАО</span> «Комитекс»
+                    — фабрика нетканых материалов, <span className="boldGreen">ООО</span> «Сыктывкарский фанерный
+                    завод», <span className="boldGreen">ОАО</span> «Сыктывкарский ликеро-водочный завод» — ведущий
                     производитель алкогольной продукции в республике.
                 </p>
                 <div className="about__wrapper-block">
@@ -112,10 +112,10 @@ const About = () => {
                 <p className="about__wrapper-text">
                     Столица Коми поддерживает дружеские связи с зарубежными городами, пять из которых являются
                     городами-побратимами Сыктывкара: г. Тайюань (<span
-                    className="gold">Китай, провинция Шанси</span>), г. Лос-Алтос (<span
-                    className="gold">США</span>), г. Кулльера (<span className="gold">Испания</span>), г.
-                    Дебрецен (<span className="gold">Венгрия</span>) и г. Ловеч (<span
-                    className="gold">Болгария</span>).
+                    className="boldGreen">Китай, провинция Шанси</span>), г. Лос-Алтос (<span
+                    className="boldGreen">США</span>), г. Кулльера (<span className="boldGreen">Испания</span>), г.
+                    Дебрецен (<span className="boldGreen">Венгрия</span>) и г. Ловеч (<span
+                    className="boldGreen">Болгария</span>).
                 </p>
             </div>
         </div>

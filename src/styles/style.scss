@@ -29,6 +29,9 @@ body {
 .wrapper {
   width: 70vw;
   margin: 0 auto;
+  @media screen and (max-width: 700px) {
+    width: 85vw;
+  }
 }
 
 .initializing {
@@ -95,6 +98,10 @@ body {
 
 .gold {
   color: $gold;
+}
+
+.boldGreen {
+  color: $boldGreen;
 }
 
 .secondary {
@@ -166,7 +173,7 @@ body {
 .header {
   @include flex;
   @include wh;
-  @include bg($primary-dark);
+  @include bg($black);
   z-index: 998;
   padding: 10px;
 
@@ -182,11 +189,11 @@ body {
     }
 
     .active {
-      color: $secondary;
+      color:  $secondary;
     }
 
     a {
-      @include links(.2s all, $secondary);
+      @include links(.2s all,  $secondary);
     }
 
     ul {
@@ -404,7 +411,7 @@ body {
 
     &-item {
       @include flexColumn;
-      @include wh(70vw);
+      @include wh(80vw);
       margin: auto;
       max-width: 800px;
       padding-top: 2vh;
@@ -603,7 +610,7 @@ body {
 
       @media screen and (max-width: 580px) {
         border-radius: 0;
-        width: 35%;
+        width: 38%;
         margin-bottom: 7px;
       }
     }
@@ -689,7 +696,7 @@ body {
 //Yandex map styles start
 
 iframe {
-  @include wh(75vw, 75vh);
+  @include wh(85vw, 75vh);
   border: 2px solid $primary-dark;
   margin: 0px 5px;
 }
@@ -700,7 +707,7 @@ iframe {
 
 .leisure {
   @include flexColumn;
-  @include wh(70vw);
+  @include wh(80vw);
   margin: auto;
   max-width: 800px;
   padding-top: 3vh;
@@ -818,7 +825,6 @@ iframe {
 .news {
   &__wrapper {
     @include flexColumn;
-    @include wh(70vw);
     text-align: left;
     margin: auto;
     max-width: 800px;
@@ -924,7 +930,7 @@ iframe {
 
   span {
     padding: 7px 20px;
-    background-color: $primary;
+    background-color: $black;
     color: $primary-text;
     border-radius: 100px;
 
