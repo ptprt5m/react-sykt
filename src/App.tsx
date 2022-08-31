@@ -23,7 +23,6 @@ import {AppStateType} from './redux/redux'
 import News from './components/News'
 import Leisure from './components/Leisures'
 import Error404Page from './components/commons/Error404Page'
-// import videoplayback from '../src/img/videoplayback.mp4'
 
 const Stars = React.lazy(() => import('./components/Stars/Stars'))
 const Map = React.lazy(() => import('./components/Map/Map'))
@@ -55,9 +54,7 @@ const App: React.FC<Props> = (props) => {
             <HeaderContainer/>
 
             <main className="main">
-                {/*<video>*/}
-                {/*    <source src={videoplayback} type="video/mp4" />*/}
-                {/*</video>*/}
+            
                 <React.Suspense fallback={<Preloader/>}>
                     <Routes>
                         <Route path='/' element={<Homepage/>}/>
